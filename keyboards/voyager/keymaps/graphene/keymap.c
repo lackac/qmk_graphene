@@ -97,8 +97,24 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
 
+#define BLACK {0, 0, 0}
+#define TREE_SAP {23, 226, 208}
+#define FELWOOD_LEAVES {79, 218, 204}
+
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-  [4] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {79,218,204}, {23,226,208}, {23,226,208}, {23,226,208}, {79,218,204}, {79,218,204}, {79,218,204}, {23,226,208}, {23,226,208}, {23,226,208}, {79,218,204}, {79,218,204}, {23,226,208}, {23,226,208}, {23,226,208}, {23,226,208}, {79,218,204}, {79,218,204}, {0,0,0}, {23,226,208} },
+  [SYS_NUM] = {
+    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
+    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
+    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
+    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
+                                                                                    BLACK,              BLACK,
+
+    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
+    FELWOOD_LEAVES,     TREE_SAP,           TREE_SAP,           TREE_SAP,           FELWOOD_LEAVES,     FELWOOD_LEAVES,
+    FELWOOD_LEAVES,     TREE_SAP,           TREE_SAP,           TREE_SAP,           FELWOOD_LEAVES,     FELWOOD_LEAVES,
+    TREE_SAP,           TREE_SAP,           TREE_SAP,           TREE_SAP,           FELWOOD_LEAVES,     FELWOOD_LEAVES,
+    BLACK,              TREE_SAP
+  },
 };
 
 void set_layer_color(int layer) {
@@ -121,13 +137,13 @@ void set_layer_color(int layer) {
 void rgb_matrix_indicators_user(void) {
   if (keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
-    case 4:
-      set_layer_color(4);
+    case SYS_NUM:
+      set_layer_color(SYS_NUM);
       break;
-   default:
-    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
-      rgb_matrix_set_color_all(0, 0, 0);
-    break;
+    default:
+      if (rgb_matrix_get_flags() == LED_FLAG_NONE)
+        rgb_matrix_set_color_all(0, 0, 0);
+      break;
   }
 }
 
