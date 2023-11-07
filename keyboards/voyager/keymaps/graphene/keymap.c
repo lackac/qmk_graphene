@@ -19,6 +19,9 @@
 #define SE_SECT_MAC ALGR(KC_6)
 #define MOON_LED_LEVEL LED_LEVEL
 
+#define LCS(kc) (QK_LCTL | QK_LSFT | (kc))
+#define LGCS(kc) (QK_LGUI | QK_LCTL | QK_LSFT | (kc))
+
 enum layers {
   BASE,
   SHORTCUTS,
@@ -33,58 +36,58 @@ enum custom_keycodes {
 };
 
 enum tap_dance_codes {
-  DANCE_0,
-  DANCE_1,
-  DANCE_2,
-  DANCE_3,
-  DANCE_4,
-  DANCE_5,
-  DANCE_6,
-  DANCE_7,
+  D_SPC_F19,
+  D_BSP_DEL,
+  D_DEL_HOME,
+  D_CLBR_END,
+  D_DBL_QUOTES,
+  D_SNG_QUOTES,
+  D_NUM_ENT_EQ,
+  D_NUM_0_BSP,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_TRANSPARENT,
-    KC_GRAVE,       KC_B,           MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_D),MT(MOD_LGUI, KC_W),KC_Z,                                           KC_TRANSPARENT, MT(MOD_RGUI, KC_F),MT(MOD_RALT, KC_O),MT(MOD_RCTL, KC_U),KC_J,           KC_SCOLON,
-    LT(5,KC_ESCAPE),LT(4,KC_N),     LT(3,KC_R),     LT(2,KC_T),     LT(1,KC_S),     KC_G,                                           KC_Y,           LT(1,KC_H),     LT(2,KC_A),     LT(3,KC_E),     LT(4,KC_I),     KC_ENTER,
-    KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,                                           KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
-                                                    TD(DANCE_0),    MT(MOD_LSFT, KC_TAB),                                KC_TRANSPARENT, TD(DANCE_1)
+    _______,            KC_1,               KC_2,               KC_3,               KC_4,               KC_5,               /**/ KC_6,               KC_7,               KC_8,               KC_9,               KC_0,               _______,
+    KC_GRAVE,           KC_B,               MT(MOD_LCTL, KC_L), MT(MOD_LALT, KC_D), MT(MOD_LGUI, KC_W), KC_Z,               /**/ _______,            MT(MOD_RGUI, KC_F), MT(MOD_RALT, KC_O), MT(MOD_RCTL, KC_U), KC_J,               KC_SCOLON,
+    LT(5, KC_ESCAPE),   LT(4, KC_N),        LT(3, KC_R),        LT(2, KC_T),        LT(1, KC_S),        KC_G,               /**/ KC_Y,               LT(1, KC_H),        LT(2, KC_A),        LT(3, KC_E),        LT(4, KC_I),        KC_ENTER,
+    KC_EQUAL,           KC_Q,               KC_X,               KC_M,               KC_C,               KC_V,               /**/ KC_K,               KC_P,               KC_QUOTE,           KC_COMMA,           KC_DOT,             KC_SLASH,
+                                                                                    TD(D_SPC_F19),      MT(MOD_LSFT, KC_TAB),    _______,            TD(D_BSP_DEL)
   ),
   [SHORTCUTS] = LAYOUT_voyager(
-    RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_SLD,        RGB_MOD,        RGB_SPD,        RGB_SPI,                                        RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAD,        RGB_SAI,
-    KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_ESCAPE,      LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_TRANSPARENT,                                 KC_AUDIO_VOL_UP,LGUI(KC_C),     KC_UP,          KC_BSPACE,      LGUI(KC_V),     KC_TRANSPARENT,
-    KC_TRANSPARENT, LGUI(KC_GRAVE), TD(DANCE_2),    TD(DANCE_3),    LGUI(KC_RBRACKET),LGUI(LCTL(LSFT(KC_4))),                                KC_AUDIO_VOL_DOWN,KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_ENTER,       KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_PGUP,        KC_PGDOWN,      CAPS_WORD,      KC_TRANSPARENT,                                 KC_AUDIO_MUTE,  KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_MEDIA_STOP,  KC_TRANSPARENT,
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    RGB_TOG,            TOGGLE_LAYER_COLOR, RGB_SLD,            RGB_MOD,            RGB_SPD,            RGB_SPI,            /**/ RGB_HUD,            RGB_HUI,            RGB_VAD,            RGB_VAI,            RGB_SAD,            RGB_SAI,
+    KC_BRID,            KC_BRIU,            KC_ESCAPE,          LCS(KC_TAB),        LCTL(KC_TAB),       _______,            /**/ KC_VOLU,            LGUI(KC_C),         KC_UP,              KC_BSPACE,          LGUI(KC_V),         _______,
+    _______,            LGUI(KC_GRAVE),     TD(D_DEL_HOME),     TD(D_CLBR_END),     LGUI(KC_RBRACKET),  LGCS(KC_4),         /**/ KC_VOLD,            KC_LEFT,            KC_DOWN,            KC_RIGHT,           KC_ENTER,           _______,
+    _______,            _______,            KC_PGUP,            KC_PGDOWN,          CAPS_WORD,          _______,            /**/ KC_MUTE,            KC_MPRV,            KC_MPLY,            KC_MNXT,            KC_MSTP,            _______,
+                                                                                    _______,            _______,            /**/ _______,            _______
   ),
   [SYM_A] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_AT,          KC_HASH,        KC_DLR,         KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LABK,        KC_RABK,        KC_CIRC,        KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_GRAVE,       KC_TILD,        KC_MINUS,       KC_SLASH,       KC_PLUS,                                        KC_EQUAL,       KC_LBRACKET,    KC_RBRACKET,    KC_PIPE,        KC_BSLASH,      KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_DLR,         LALT(KC_3),     LALT(LSFT(KC_2)),KC_TRANSPARENT, KC_TRANSPARENT,
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
+    _______,            _______,            KC_AT,              KC_HASH,            KC_DLR,             _______,            /**/ _______,            KC_LABK,            KC_RABK,            KC_CIRC,            _______,            _______,
+    _______,            KC_GRAVE,           KC_TILD,            KC_MINUS,           KC_SLASH,           KC_PLUS,            /**/ KC_EQUAL,           KC_LBRACKET,        KC_RBRACKET,        KC_PIPE,            KC_BSLASH,          _______,
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            KC_DLR,             LALT(KC_3),         LSA(KC_2),          _______,            _______,
+                                                                                    _______,            _______,            /**/ _______,            _______
   ),
   [SYM_B] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_AT,          TD(DANCE_4),    TD(DANCE_5),    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_SCOLON,      KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_ASTR,        KC_PERC,        KC_EXLM,        KC_DQUO,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LCBR,        KC_RCBR,        KC_AMPR,        KC_COLN,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_QUES,        KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
+    _______,            _______,            KC_AT,              TD(D_DBL_QUOTES),   TD(D_SNG_QUOTES),   _______,            /**/ _______,            KC_LPRN,            KC_RPRN,            KC_SCOLON,          _______,            _______,
+    _______,            KC_ASTR,            KC_PERC,            KC_EXLM,            KC_DQUO,            _______,            /**/ _______,            KC_LCBR,            KC_RCBR,            KC_AMPR,            KC_COLN,            _______,
+    _______,            _______,            _______,            KC_QUES,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
+                                                                                    _______,            _______,            /**/ _______,            _______
   ),
   [SYS_NUM] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(LSFT(KC_LBRACKET)),LCTL(LSFT(KC_RBRACKET)),KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_KP_PLUS,     KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_ASTERISK, KC_CIRC,
-    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(LSFT(KC_SCOLON)),LCTL(LSFT(KC_QUOTE)),LCTL(LSFT(KC_EQUAL)),KC_TRANSPARENT,                                 KC_KP_MINUS,    KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_SLASH,    KC_LPRN,
-    KC_TRANSPARENT, KC_TRANSPARENT, LCTL(LSFT(KC_COMMA)),LCTL(LSFT(KC_DOT)),LCTL(LSFT(KC_MINUS)),KC_TRANSPARENT,                                 KC_KP_DOT,      KC_KP_1,        KC_KP_2,        KC_KP_3,        TD(DANCE_6),    KC_RPRN,
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, TD(DANCE_7)
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
+    _______,            _______,            LCS(KC_LBRACKET),   LCS(KC_RBRACKET),   _______,            _______,            /**/ KC_KP_PLUS,         KC_KP_7,            KC_KP_8,            KC_KP_9,            KC_KP_ASTERISK,     KC_CIRC,
+    _______,            _______,            LCS(KC_SCOLON),     LCS(KC_QUOTE),      LCS(KC_EQUAL),      _______,            /**/ KC_KP_MINUS,        KC_KP_4,            KC_KP_5,            KC_KP_6,            KC_KP_SLASH,        KC_LPRN,
+    _______,            _______,            LCS(KC_COMMA),      LCS(KC_DOT),        LCS(KC_MINUS),      _______,            /**/ KC_KP_DOT,          KC_KP_1,            KC_KP_2,            KC_KP_3,            TD(D_NUM_ENT_EQ),   KC_RPRN,
+                                                                                    _______,            _______,            /**/ _______,            TD(D_NUM_0_BSP)
   ),
   [HJKL] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_P,           KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_H,           KC_J,           KC_K,           KC_L,           KC_LBRACKET,    KC_RBRACKET,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_N,           KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            KC_P,               _______,
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_H,               KC_J,               KC_K,               KC_L,               KC_LBRACKET,        KC_RBRACKET,
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_N,               _______,            _______,            _______,            _______,            _______,
+                                                                                    _______,            _______,            /**/ _______,            _______
   ),
 };
 
@@ -460,12 +463,12 @@ void dance_7_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
-  [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
-  [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
-  [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_3, dance_3_finished, dance_3_reset),
-  [DANCE_4] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_4, dance_4_finished, dance_4_reset),
-  [DANCE_5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
-  [DANCE_6] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_6, dance_6_finished, dance_6_reset),
-  [DANCE_7] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_7, dance_7_finished, dance_7_reset),
+  [D_SPC_F19] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
+  [D_BSP_DEL] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
+  [D_DEL_HOME] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
+  [D_CLBR_END] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_3, dance_3_finished, dance_3_reset),
+  [D_DBL_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_4, dance_4_finished, dance_4_reset),
+  [D_SNG_QUOTES] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
+  [D_NUM_ENT_EQ] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_6, dance_6_finished, dance_6_reset),
+  [D_NUM_0_BSP] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_7, dance_7_finished, dance_7_reset),
 };
