@@ -22,6 +22,8 @@
 #define LCS(kc) (QK_LCTL | QK_LSFT | (kc))
 #define LGCS(kc) (QK_LGUI | QK_LCTL | QK_LSFT | (kc))
 
+#define C_MAGIC QK_AREP
+
 enum layers {
   BASE,
   SHORTCUTS,
@@ -33,6 +35,22 @@ enum layers {
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
+  C_MAG_2,
+  C_MAG_3,
+  MG_ENT,
+  MG_MENT,
+  MG_ER,
+  MG_ES,
+  MG_UST,
+  MG_ON,
+  MG_ION,
+  MG_OA,
+  MG_SP_BUT,
+  MG_THE,
+  MG_EFORE,
+  MG_HICH,
+  MG_MLATIV,
+  MG_QUOT_S,
 };
 
 enum tap_dance_codes {
@@ -49,10 +67,10 @@ enum tap_dance_codes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
     _______,            KC_1,               KC_2,               KC_3,               KC_4,               KC_5,               /**/ KC_6,               KC_7,               KC_8,               KC_9,               KC_0,               _______,
-    KC_GRAVE,           KC_B,               MT(MOD_LCTL, KC_L), MT(MOD_LALT, KC_D), MT(MOD_LGUI, KC_W), KC_Z,               /**/ _______,            MT(MOD_RGUI, KC_F), MT(MOD_RALT, KC_O), MT(MOD_RCTL, KC_U), KC_J,               KC_SCOLON,
+    KC_GRAVE,           KC_B,               MT(MOD_LCTL, KC_L), MT(MOD_LALT, KC_D), MT(MOD_LGUI, KC_W), KC_Z,               /**/ C_MAGIC,            MT(MOD_RGUI, KC_F), MT(MOD_RALT, KC_O), MT(MOD_RCTL, KC_U), KC_J,               KC_SCOLON,
     LT(5, KC_ESCAPE),   LT(4, KC_N),        LT(3, KC_R),        LT(2, KC_T),        LT(1, KC_S),        KC_G,               /**/ KC_Y,               LT(1, KC_H),        LT(2, KC_A),        LT(3, KC_E),        LT(4, KC_I),        KC_ENTER,
     KC_EQUAL,           KC_Q,               KC_X,               KC_M,               KC_C,               KC_V,               /**/ KC_K,               KC_P,               KC_QUOTE,           KC_COMMA,           KC_DOT,             KC_SLASH,
-                                                                                    TD(D_SPC_F19),      MT(MOD_LSFT, KC_TAB),    _______,            TD(D_BSP_DEL)
+                                                                                    TD(D_SPC_F19),      MT(MOD_LSFT, KC_TAB),    QK_REP,             TD(D_BSP_DEL)
   ),
   [SHORTCUTS] = LAYOUT_voyager(
     RGB_TOG,            TOGGLE_LAYER_COLOR, RGB_SLD,            RGB_MOD,            RGB_SPD,            RGB_SPI,            /**/ RGB_HUD,            RGB_HUI,            RGB_VAD,            RGB_VAI,            RGB_SAD,            RGB_SAI,
@@ -89,6 +107,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_N,               _______,            _______,            _______,            _______,            _______,
                                                                                     _______,            _______,            /**/ _______,            _______
   ),
+};
+
+const uint16_t PROGMEM combo_LB_IM[] = { KC_C, KC_M, COMBO_END};
+const uint16_t PROGMEM combo_LB_MR[] = { KC_M, KC_X, COMBO_END};
+const uint16_t PROGMEM combo_LB_RP[] = { KC_X, KC_Q, COMBO_END};
+const uint16_t PROGMEM combo_LB_IR[] = { KC_C, KC_X, COMBO_END};
+const uint16_t PROGMEM combo_RB_IM[] = { KC_P, KC_QUOT, COMBO_END};
+const uint16_t PROGMEM combo_RB_MR[] = { KC_QUOT, KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_RB_RP[] = { KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_RB_IR[] = { KC_P, KC_COMM, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO(combo_LB_IM, KC_COLN),
+  COMBO(combo_LB_MR, C_MAG_2),
+  COMBO(combo_LB_RP, C_MAG_3),
+  COMBO(combo_LB_IR, MG_QUOT_S),
+  COMBO(combo_RB_IM, KC_SCLN),
+  COMBO(combo_RB_MR, C_MAG_2),
+  COMBO(combo_RB_RP, C_MAG_3),
+  COMBO(combo_RB_IR, MG_QUOT_S),
 };
 
 extern rgb_config_t rgb_matrix_config;
@@ -147,17 +185,340 @@ void rgb_matrix_indicators_user(void) {
   }
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
   switch (keycode) {
-    case RGB_SLD:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-      }
+    // Ignore Custom Magic Keys
+    case C_MAG_2:
+    case C_MAG_3:
       return false;
+    case KC_A ... KC_Z:
+      // Forget shift on repeat for letters
+      if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
+          *remembered_mods &= ~MOD_MASK_SHIFT;
+      }
+      break;
   }
+
   return true;
 }
 
+uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+  switch (keycode) {
+    case KC_C:
+    case KC_P:
+    case KC_D:
+    case KC_G:
+    case KC_Z: return KC_Y;
+    case KC_Y: return KC_P;
+    case KC_R: return KC_L;
+    case KC_K: return KC_S;
+    case KC_L:
+    case KC_S: return KC_K;
+    case KC_U: return KC_E;
+    case KC_E: return KC_U;
+    case KC_O: return KC_A;
+    case KC_A: return KC_O;
+    case KC_DOT:
+      if (mods & MOD_MASK_SHIFT) {
+        return KC_EQL;
+      } else {
+        return KC_BSLS;
+      }
+    case KC_COMM:
+      if (mods & MOD_MASK_SHIFT) {
+        return KC_EQL;
+      } else {
+        return MG_SP_BUT;
+      }
+    case KC_EQL:
+    case KC_MINS: return KC_RABK;
+    case KC_Q: return MG_MLATIV;
+    case KC_H: return MG_OA;
+    case KC_I: return MG_ON;
+    case KC_N: return MG_ION;
+    case KC_V: return MG_ER;
+    case KC_X: return MG_ES;
+    case KC_M: return MG_ENT;
+    case KC_T: return MG_MENT;
+    case KC_J: return MG_UST;
+    case KC_B: return MG_EFORE;
+    case KC_W: return MG_HICH;
+    case KC_SPC:
+    case KC_TAB:
+    case KC_ENT: return MG_THE;
+    case KC_QUOTE:
+      if (mods & MOD_MASK_SHIFT) {
+        return MG_THE;
+      } else {
+        return KC_TRNS;
+      }
+    case KC_1 ... KC_8:
+    case KC_0: return KC_DOT;
+    case KC_9:
+      if (mods & MOD_MASK_SHIFT) {
+        return MG_THE;
+      } else {
+        return KC_DOT;
+      }
+  }
+
+  return KC_TRNS;
+}
+
+bool process_magic_key_2(uint16_t prev_keycode, uint8_t prev_mods) {
+  switch (prev_keycode) {
+    case KC_B:
+      SEND_STRING("ecome");
+      return false;
+    case KC_F:
+      SEND_STRING("ollow");
+      return false;
+    case KC_N:
+      SEND_STRING("eighbor");
+      return false;
+    case KC_H:
+      SEND_STRING("owever");
+      return false;
+    case KC_U:
+      SEND_STRING("pgrade");
+      return false;
+    case KC_O:
+      SEND_STRING("ther");
+      return false;
+    case KC_A:
+      SEND_STRING("lready");
+      return false;
+    case KC_P:
+      SEND_STRING("sych");
+      return false;
+    case KC_I:
+      SEND_STRING("'ll");
+      return false;
+    case KC_K:
+      SEND_STRING("now");
+      return false;
+    case KC_T:
+      SEND_STRING("hough");
+      return false;
+    case KC_L:
+      SEND_STRING("ittle");
+      return false;
+    case KC_M:
+    case KC_R:
+      SEND_STRING("ight");
+      return false;
+    case KC_J:
+      SEND_STRING("udge");
+      return false;
+    case KC_C:
+      SEND_STRING("ould");
+      return false;
+    case KC_D:
+      SEND_STRING("evelop");
+      return false;
+    case KC_G:
+      SEND_STRING("eneral");
+      return false;
+    case KC_W:
+      SEND_STRING("here");
+      return false;
+    case KC_S:
+      SEND_STRING("hould");
+      return false;
+    case KC_DOT:
+      SEND_STRING("org");
+      return false;
+    case KC_COMM:
+      SEND_STRING(" however");
+      return false;
+    default:
+      SEND_STRING("'ll");
+      return false;
+  }
+}
+
+bool process_magic_key_3(uint16_t prev_keycode, uint8_t prev_mods) {
+  switch (prev_keycode) {
+    case KC_B:
+      SEND_STRING("etween");
+      return false;
+    case KC_N:
+      SEND_STRING("umber");
+      return false;
+    case KC_U:
+      SEND_STRING("pdate");
+      return false;
+    case KC_A:
+      SEND_STRING("bout");
+      return false;
+    case KC_W:
+      SEND_STRING("orld");
+      return false;
+    case KC_G:
+      SEND_STRING("overn");
+      return false;
+    case KC_P:
+      SEND_STRING("rogram");
+      return false;
+    case KC_Q:
+      SEND_STRING("uestion");
+      return false;
+    case KC_C:
+      SEND_STRING("rowd");
+      return false;
+    case KC_S:
+      SEND_STRING("chool");
+      return false;
+    case KC_T:
+      SEND_STRING("hrough");
+      return false;
+    case KC_M:
+      SEND_STRING("anage");
+      return false;
+    case KC_O:
+      SEND_STRING("xygen");
+      return false;
+    case KC_I:
+      SEND_STRING("'m");
+      return false;
+    case KC_E:
+      SEND_STRING("'re");
+      return false;
+    case KC_DOT:
+      SEND_STRING("com");
+      return false;
+    case KC_COMM:
+      SEND_STRING(" since");
+      return false;
+    default:
+      return false;
+  }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (record->event.pressed) {
+    int rep_count = get_repeat_key_count();
+    if (rep_count < -1 && keycode != MG_UST) {
+      send_char('n');
+      return false;
+    }
+    switch (keycode) {
+      case RGB_SLD:
+        rgblight_mode(1);
+        return false;
+      case C_MAG_2:
+        return process_magic_key_2(get_repeat_key_keycode(), get_repeat_key_mods());
+      case C_MAG_3:
+        return process_magic_key_3(get_repeat_key_keycode(), get_repeat_key_mods());
+      case MG_ENT:
+        SEND_STRING("ent");
+        return false;
+      case MG_MENT:
+        SEND_STRING("ment");
+        return false;
+      case MG_ER:
+        SEND_STRING("er");
+        return false;
+      case MG_ES:
+        SEND_STRING("es");
+        return false;
+      case MG_UST:
+        if (rep_count < -1) {
+          SEND_STRING("ment");
+        } else {
+          SEND_STRING("ust");
+        }
+        return false;
+      case MG_OA:
+        SEND_STRING("oa");
+        return false;
+      case MG_ON:
+        SEND_STRING("on");
+        return false;
+      case MG_ION:
+        SEND_STRING("ion");
+        return false;
+      case MG_SP_BUT:
+        SEND_STRING(" but");
+        return false;
+      case MG_THE:
+        SEND_STRING("the");
+        return false;
+      case MG_EFORE:
+        SEND_STRING("efore");
+        return false;
+      case MG_HICH:
+        SEND_STRING("hich");
+        return false;
+      case MG_MLATIV:
+        SEND_STRING("mlativ");
+        return false;
+      case MG_QUOT_S:
+        SEND_STRING("'s");
+        return false;
+    }
+
+    if (rep_count > 0) {
+      switch (keycode) {
+        case KC_BSPC:
+        case KC_DQUO:
+        case KC_LPRN:
+        case KC_SPC:
+        case KC_ENT:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          SEND_STRING("for");
+          return false;
+        case KC_I:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          SEND_STRING("ng");
+          return false;
+        case KC_DOT:
+        case KC_QUES:
+        case KC_EXLM:
+        case KC_COLN:
+        case KC_SCLN:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          send_char(' ');
+          add_oneshot_mods(MOD_MASK_SHIFT);
+          set_repeat_key_keycode(KC_SPC);
+          return false;
+        case KC_COMM:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          SEND_STRING(" and");
+          return false;
+        case KC_A:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          SEND_STRING("nd");
+          return false;
+        case KC_N:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          send_char('f');
+          return false;
+        case KC_B:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          SEND_STRING("ecause");
+          return false;
+        case KC_W:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          SEND_STRING("ould");
+          return false;
+        case KC_Y:
+          unregister_weak_mods(MOD_MASK_CSAG);
+          if (rep_count > 2) {
+            SEND_STRING("ll");
+            return false;
+          }
+          if (rep_count > 1) {
+            send_char('\'');
+            return false;
+          }
+          SEND_STRING("ou");
+          return false;
+      }
+    }
+  }
+  return true;
+}
 
 typedef struct {
   bool is_press_action;
