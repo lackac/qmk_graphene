@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRAVE,           KC_B,               MT(MOD_LCTL, KC_L), MT(MOD_LALT, KC_D), MT(MOD_LGUI, KC_W), KC_Z,               /**/ C_MAGIC,            MT(MOD_RGUI, KC_F), MT(MOD_RALT, KC_O), MT(MOD_RCTL, KC_U), KC_J,               KC_SEMICOLON,
     LT(5, KC_ESCAPE),   LT(4, KC_N),        LT(3, KC_R),        LT(2, KC_T),        LT(1, KC_S),        KC_G,               /**/ KC_Y,               LT(1, KC_H),        LT(2, KC_A),        LT(3, KC_E),        LT(4, KC_I),        KC_ENTER,
     KC_EQUAL,           KC_Q,               KC_X,               KC_M,               KC_C,               KC_V,               /**/ KC_K,               KC_P,               KC_QUOTE,           KC_COMMA,           KC_DOT,             KC_SLASH,
-                                                                                    TD(TD_SPC_F19),     MT(MOD_LSFT, KC_TAB),    QK_REP,             TD(TD_BSP_DEL)
+                                                                                    TD(TD_SPC_F19),     LSFT_T(KC_TAB),          RSFT_T(QK_REP),     KC_BACKSPACE
   ),
   [SHORTCUTS] = LAYOUT_voyager(
     RGB_TOG,            TOGGLE_LAYER_COLOR, RGB_M_P,            RGB_MOD,            RGB_SPD,            RGB_SPI,            /**/ RGB_HUD,            RGB_HUI,            RGB_VAD,            RGB_VAI,            RGB_SAD,            RGB_SAI,
@@ -395,7 +395,22 @@ bool process_magic_key_3(uint16_t prev_keycode, uint8_t prev_mods) {
   }
 }
 
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
+  switch (keycode) {
+    case RSFT_T(QK_REP):
+      return false;
+      break;
+  }
+
+  return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  // turn RSFT_T(QK_REP) into QK_REP if it's just tapped
+  if (keycode == RSFT_T(QK_REP) && record->tap.count) {
+    return process_repeat_key(QK_REP, record);
+  }
+
   if (record->event.pressed) {
     int rep_count = get_repeat_key_count();
     if (rep_count < -1 && keycode != MG_UST) {
