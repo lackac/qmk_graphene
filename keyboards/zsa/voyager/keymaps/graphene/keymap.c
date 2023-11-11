@@ -66,13 +66,13 @@ enum tap_dance_codes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
     _______,            KC_1,               KC_2,               KC_3,               KC_4,               KC_5,               /**/ KC_6,               KC_7,               KC_8,               KC_9,               KC_0,               _______,
-    KC_GRAVE,           KC_B,               MT(MOD_LCTL, KC_L), MT(MOD_LALT, KC_D), MT(MOD_LGUI, KC_W), KC_Z,               /**/ C_MAGIC,            MT(MOD_RGUI, KC_F), MT(MOD_RALT, KC_O), MT(MOD_RCTL, KC_U), KC_J,               KC_SEMICOLON,
-    LT(5, KC_ESCAPE),   LT(4, KC_N),        LT(3, KC_R),        LT(2, KC_T),        LT(1, KC_S),        KC_G,               /**/ KC_Y,               LT(1, KC_H),        LT(2, KC_A),        LT(3, KC_E),        LT(4, KC_I),        KC_ENTER,
+    KC_GRAVE,           KC_B,               LCTL_T(KC_L),       LALT_T(KC_D),       LGUI_T(KC_W),       KC_Z,               /**/ C_MAGIC,            RGUI_T(KC_F),       RALT_T(KC_O),       RCTL_T(KC_U),       KC_J,               KC_SEMICOLON,
+    LT(5, KC_ESC),      LT(4, KC_N),        LT(3, KC_R),        LT(2, KC_T),        LT(1, KC_S),        KC_G,               /**/ KC_Y,               LT(1, KC_H),        LT(2, KC_A),        LT(3, KC_E),        LT(4, KC_I),        KC_ENTER,
     KC_EQUAL,           KC_Q,               KC_X,               KC_M,               KC_C,               KC_V,               /**/ KC_K,               KC_P,               KC_QUOTE,           KC_COMMA,           KC_DOT,             KC_SLASH,
                                                                                     TD(TD_SPC_F19),     LSFT_T(KC_TAB),          RSFT_T(QK_REP),     KC_BACKSPACE
   ),
   [SHORTCUTS] = LAYOUT_voyager(
-    RGB_TOG,            TOGGLE_LAYER_COLOR, RGB_M_P,            RGB_MOD,            RGB_SPD,            RGB_SPI,            /**/ RGB_HUD,            RGB_HUI,            RGB_VAD,            RGB_VAI,            RGB_SAD,            RGB_SAI,
+    RGB_TOG,            QK_KB,              RGB_M_P,            RGB_MOD,            RGB_SPD,            RGB_SPI,            /**/ RGB_HUD,            RGB_HUI,            RGB_VAD,            RGB_VAI,            RGB_SAD,            RGB_SAI,
     KC_BRID,            KC_BRIU,            KC_ESCAPE,          LCS(KC_TAB),        LCTL(KC_TAB),       _______,            /**/ KC_VOLU,            LGUI(KC_C),         KC_UP,              KC_BACKSPACE,       LGUI(KC_V),         _______,
     _______,            LGUI(KC_GRAVE),     TD(TD_DEL_HOME),    TD(TD_CLBR_END),    LGUI(KC_RBRC),      LGCS(KC_4),         /**/ KC_VOLD,            KC_LEFT,            KC_DOWN,            KC_RIGHT,           KC_ENTER,           _______,
     _______,            _______,            KC_PGUP,            KC_PGDN,            CW_TOGG,            _______,            /**/ KC_MUTE,            KC_MPRV,            KC_MPLY,            KC_MNXT,            KC_MSTP,            _______,
@@ -94,10 +94,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SYS_NUM] = LAYOUT_voyager(
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-    _______,            _______,            LCS(KC_LBRC),       LCS(KC_RBRC),       _______,            _______,            /**/ KC_KP_PLUS,         KC_KP_7,            KC_KP_8,            KC_KP_9,            KC_KP_ASTERISK,     KC_CIRC,
-    _______,            _______,            LCS(KC_SEMICOLON),  LCS(KC_QUOTE),      LCS(KC_EQUAL),      _______,            /**/ KC_KP_MINUS,        KC_KP_4,            KC_KP_5,            KC_KP_6,            KC_KP_SLASH,        KC_LPRN,
-    _______,            _______,            LCS(KC_COMMA),      LCS(KC_DOT),        LCS(KC_MINUS),      _______,            /**/ KC_KP_DOT,          KC_KP_1,            KC_KP_2,            KC_KP_3,            TD(TD_NUM_ENT_EQ),  KC_RPRN,
-                                                                                    _______,            _______,            /**/ _______,            TD(TD_NUM_0_BSP)
+    _______,            KC_1,               KC_2,               KC_3,               KC_4,               KC_5,               /**/ KC_6,               KC_7,               KC_8,               KC_9,               KC_MINUS,           KC_CIRC,
+    _______,            LCTL(KC_SCLN),      LCTL(KC_LBRC),      LCTL(KC_RBRC),      LCTL(KC_QUOTE),     LCTL(KC_EQUAL),     /**/ KC_SLASH,           KC_4,               KC_5,               KC_6,               KC_ENTER,           KC_LPRN,
+    _______,            LCTL(KC_Z),         LCTL(KC_COMMA),     LCTL(KC_DOT),       LCTL(KC_C),         LCTL(KC_MINUS),     /**/ KC_DOT,             KC_1,               KC_2,               KC_3,               KC_EQUAL,           KC_RPRN,
+                                                                                    _______,            _______,            /**/ _______,            KC_0
   ),
   [HJKL] = LAYOUT_voyager(
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
