@@ -62,15 +62,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SHORTCUTS] = LAYOUT_voyager(
     RGB_TOG,            QK_KB,              RGB_M_P,            RGB_MOD,            RGB_SPD,            RGB_SPI,            /**/ RGB_HUD,            RGB_HUI,            RGB_VAD,            RGB_VAI,            RGB_SAD,            RGB_SAI,
-    KC_BRID,            KC_BRIU,            KC_ESCAPE,          LCS(KC_TAB),        LCTL(KC_TAB),       _______,            /**/ KC_VOLU,            LGUI(KC_C),         KC_UP,              KC_BACKSPACE,       LGUI(KC_V),         _______,
-    _______,            LGUI(KC_GRAVE),     KC_HOME,            KC_PGUP,            _______,            _______,            /**/ KC_VOLD,            KC_LEFT,            KC_DOWN,            KC_RIGHT,           KC_ENTER,           _______,
-    DB_TOGG,            _______,            KC_END,             KC_PGDN,            CW_TOGG,            _______,            /**/ KC_MUTE,            KC_MPRV,            KC_MPLY,            KC_MNXT,            KC_MSTP,            _______,
+    KC_BRID,            KC_BRIU,            KC_ESCAPE,          LCS(KC_TAB),        LCTL(KC_TAB),       KC_VOLU,            /**/ LGUI(KC_LBRC),      _______,            _______,            LGUI(KC_RBRC),      _______,            _______,
+    _______,            LGUI(KC_GRAVE),     KC_HOME,            KC_PGUP,            _______,            KC_VOLD,            /**/ KC_LEFT,            KC_DOWN,            KC_UP,              KC_RIGHT,           KC_ENTER,           _______,
+    DB_TOGG,            _______,            KC_END,             KC_PGDN,            CW_TOGG,            KC_MUTE,            /**/ _______,            KC_MPRV,            KC_MPLY,            KC_MNXT,            KC_MSTP,            _______,
                                                                                     _______,            _______,            /**/ _______,            _______
   ),
   [SYM_A] = LAYOUT_voyager(
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-    _______,            _______,            KC_AT,              KC_HASH,            KC_DLR,             _______,            /**/ _______,            KC_LABK,            KC_RABK,            KC_CIRCUMFLEX,      _______,            _______,
-    _______,            KC_GRAVE,           KC_TILD,            KC_MINUS,           KC_SLASH,           KC_PLUS,            /**/ KC_EQUAL,           KC_LEFT_BRACKET,    KC_RIGHT_BRACKET,   KC_PIPE,            KC_BACKSLASH,       _______,
+    _______,            _______,            KC_AT,              KC_HASH,            KC_PLUS,            _______,            /**/ _______,            KC_LABK,            KC_RABK,            KC_CIRCUMFLEX,      _______,            _______,
+    _______,            KC_GRAVE,           KC_TILD,            KC_UNDS,            KC_MINUS,           KC_SLASH,           /**/ KC_EQUAL,           KC_LBRC,            KC_RBRC,            KC_PIPE,            KC_BACKSLASH,       _______,
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            KC_DLR,             LALT(KC_3),         LSA(KC_2),          _______,            _______,
                                                                                     _______,            _______,            /**/ _______,            _______
   ),
@@ -83,15 +83,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SYS_NUM] = LAYOUT_voyager(
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-    _______,            KC_1,               KC_2,               KC_3,               KC_4,               KC_5,               /**/ KC_6,               KC_7,               KC_8,               KC_9,               KC_MINUS,           KC_CIRC,
-    _______,            LCTL(KC_SCLN),      LCTL(KC_LBRC),      LCTL(KC_RBRC),      LCTL(KC_QUOTE),     LCTL(KC_EQUAL),     /**/ KC_SLASH,           KC_4,               KC_5,               KC_6,               KC_ENTER,           KC_LPRN,
-    _______,            LCTL(KC_Z),         LCTL(KC_COMMA),     LCTL(KC_DOT),       LCTL(KC_C),         LCTL(KC_MINUS),     /**/ KC_DOT,             KC_1,               KC_2,               KC_3,               KC_EQUAL,           KC_RPRN,
+    _______,            KC_1,               LCTL_T(KC_2),       LALT_T(KC_3),       LGUI_T(KC_4),       KC_5,               /**/ KC_6,               RGUI_T(KC_7),       RALT_T(KC_8),       RCTL_T(KC_9),       KC_MINUS,           KC_CIRC,
+    _______,            LCS(KC_SCLN),       LCS(KC_QUOTE),      LCS(KC_LBRC),       LCS(KC_RBRC),       LCS(KC_EQUAL),      /**/ KC_SLASH,           KC_4,               KC_5,               KC_6,               KC_ENTER,           KC_LPRN,
+    _______,            LCS(KC_Z),          LCS(KC_COMMA),      LCS(KC_DOT),        LCS(KC_C),          LCS(KC_MINUS),      /**/ KC_DOT,             KC_1,               KC_2,               KC_3,               KC_EQUAL,           KC_RPRN,
                                                                                     _______,            _______,            /**/ _______,            KC_0
   ),
   [HJKL] = LAYOUT_voyager(
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            KC_P,               _______,
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_H,               KC_J,               KC_K,               KC_L,               KC_LEFT_BRACKET,    KC_RIGHT_BRACKET,
+    _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_H,               KC_J,               KC_K,               KC_L,               KC_LBRC,            KC_RBRC,
     _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_N,               _______,            _______,            _______,            _______,            _______,
                                                                                     _______,            _______,            /**/ _______,            _______
   ),
