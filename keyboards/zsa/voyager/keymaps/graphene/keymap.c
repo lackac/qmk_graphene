@@ -54,46 +54,46 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
-    _______,            KC_1,               KC_2,               KC_3,               KC_4,               KC_5,               /**/ KC_6,               KC_7,               KC_8,               KC_9,               KC_0,               _______,
-    KC_GRAVE,           KC_B,               LCTL_T(KC_L),       LALT_T(KC_D),       LGUI_T(KC_W),       KC_Z,               /**/ C_MAGIC,            RGUI_T(KC_F),       RALT_T(KC_O),       RCTL_T(KC_U),       KC_J,               KC_SEMICOLON,
-    LT(5, KC_ESC),      LT(4, KC_N),        LT(3, KC_R),        LT(2, KC_T),        LT(1, KC_S),        KC_G,               /**/ KC_Y,               LT(1, KC_H),        LT(2, KC_A),        LT(3, KC_E),        LT(4, KC_I),        KC_ENTER,
-    KC_EQUAL,           KC_Q,               KC_X,               KC_M,               KC_C,               KC_V,               /**/ KC_K,               KC_P,               KC_QUOTE,           KC_COMMA,           KC_DOT,             KC_SLASH,
-                                                                                    HYPR_T(KC_SPC),     LSFT_T(KC_TAB),          RSFT_T(QK_REP),     KC_BACKSPACE
+    _______,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           _______,
+    KC_GRAVE,       KC_B,           LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   KC_J,           KC_SEMICOLON,
+    LT(5, KC_ESC),  LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    KC_G,           /**/ KC_Y,           LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I),    KC_ENTER,
+    KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,           /**/ KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
+                                                                    HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), KC_BACKSPACE
   ),
   [SHORTCUTS] = LAYOUT_voyager(
-    RGB_TOG,            QK_KB,              RGB_M_P,            RGB_MOD,            RGB_SPD,            RGB_SPI,            /**/ RGB_HUD,            RGB_HUI,            RGB_VAD,            RGB_VAI,            RGB_SAD,            RGB_SAI,
-    KC_BRID,            KC_BRIU,            KC_ESCAPE,          LCS(KC_TAB),        LCTL(KC_TAB),       KC_VOLU,            /**/ LGUI(KC_LBRC),      _______,            _______,            LGUI(KC_RBRC),      _______,            _______,
-    _______,            LGUI(KC_GRAVE),     KC_HOME,            KC_PGUP,            _______,            KC_VOLD,            /**/ KC_LEFT,            KC_DOWN,            KC_UP,              KC_RIGHT,           KC_ENTER,           _______,
-    DB_TOGG,            _______,            KC_END,             KC_PGDN,            CW_TOGG,            KC_MUTE,            /**/ _______,            KC_MPRV,            KC_MPLY,            KC_MNXT,            KC_MSTP,            _______,
-                                                                                    _______,            _______,            /**/ _______,            _______
+    RGB_TOG,        QK_KB,          RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAD,        RGB_SAI,
+    KC_BRID,        KC_BRIU,        KC_ESCAPE,      LCS(KC_TAB),    LCTL(KC_TAB),   KC_VOLU,        /**/ LGUI(KC_LBRC),  _______,        _______,        LGUI(KC_RBRC),  _______,        _______,
+    _______,        LGUI(KC_GRAVE), KC_HOME,        KC_PGUP,        _______,        KC_VOLD,        /**/ KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       _______,
+    DB_TOGG,        _______,        KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE,        /**/ _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP,        _______,
+                                                                    _______,        _______,        /**/ _______,        _______
   ),
   [SYM_A] = LAYOUT_voyager(
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-    _______,            _______,            KC_AT,              KC_HASH,            KC_PLUS,            _______,            /**/ _______,            KC_LABK,            KC_RABK,            KC_CIRCUMFLEX,      _______,            _______,
-    _______,            KC_GRAVE,           KC_TILD,            KC_UNDS,            KC_MINUS,           KC_SLASH,           /**/ KC_EQUAL,           KC_LBRC,            KC_RBRC,            KC_PIPE,            KC_BACKSLASH,       _______,
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            KC_DLR,             LALT(KC_3),         LSA(KC_2),          _______,            _______,
-                                                                                    _______,            _______,            /**/ _______,            _______
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        KC_AT,          KC_HASH,        KC_PLUS,        _______,        /**/ _______,        KC_LABK,        KC_RABK,        KC_CIRCUMFLEX,  _______,        _______,
+    _______,        KC_GRAVE,       KC_TILD,        KC_UNDS,        KC_MINUS,       KC_SLASH,       /**/ KC_EQUAL,       KC_LBRC,        KC_RBRC,        KC_PIPE,        KC_BACKSLASH,   _______,
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        KC_DLR,         LALT(KC_3),     LSA(KC_2),      _______,        _______,
+                                                                    _______,        _______,        /**/ _______,        _______
   ),
   [SYM_B] = LAYOUT_voyager(
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-    _______,            _______,            KC_AT,              LALT(KC_LBRC),      LALT(KC_RBRC),      _______,            /**/ _______,            KC_LPRN,            KC_RPRN,            KC_SCLN,            _______,            _______,
-    _______,            KC_ASTR,            KC_PERC,            KC_EXLM,            KC_DQUO,            _______,            /**/ _______,            KC_LCBR,            KC_RCBR,            KC_AMPR,            KC_COLN,            _______,
-    _______,            _______,            _______,            KC_QUES,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-                                                                                    _______,            _______,            /**/ _______,            _______
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        KC_AT,          LALT(KC_LBRC),  LALT(KC_RBRC),  _______,        /**/ _______,        KC_LPRN,        KC_RPRN,        KC_SCLN,        _______,        _______,
+    _______,        KC_ASTR,        KC_PERC,        KC_EXLM,        KC_DQUO,        _______,        /**/ _______,        KC_LCBR,        KC_RCBR,        KC_AMPR,        KC_COLN,        _______,
+    _______,        _______,        _______,        KC_QUES,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+                                                                    _______,        _______,        /**/ _______,        _______
   ),
   [SYS_NUM] = LAYOUT_voyager(
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-    _______,            KC_1,               LCTL_T(KC_2),       LALT_T(KC_3),       LGUI_T(KC_4),       KC_5,               /**/ KC_6,               RGUI_T(KC_7),       RALT_T(KC_8),       RCTL_T(KC_9),       KC_MINUS,           KC_CIRC,
-    _______,            LCS(KC_SCLN),       LCS(KC_QUOTE),      LCS(KC_LBRC),       LCS(KC_RBRC),       LCS(KC_EQUAL),      /**/ KC_SLASH,           KC_4,               KC_5,               KC_6,               KC_ENTER,           KC_LPRN,
-    _______,            LCS(KC_Z),          LCS(KC_COMMA),      LCS(KC_DOT),        LCS(KC_C),          LCS(KC_MINUS),      /**/ KC_DOT,             KC_1,               KC_2,               KC_3,               KC_EQUAL,           KC_RPRN,
-                                                                                    _______,            _______,            /**/ _______,            KC_0
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        KC_1,           LCTL_T(KC_2),   LALT_T(KC_3),   LGUI_T(KC_4),   KC_5,           /**/ KC_6,           RGUI_T(KC_7),   RALT_T(KC_8),   RCTL_T(KC_9),   KC_MINUS,       KC_CIRC,
+    _______,        LCS(KC_SCLN),   LCS(KC_QUOTE),  LCS(KC_LBRC),   LCS(KC_RBRC),   LCS(KC_EQUAL),  /**/ KC_SLASH,       KC_4,           KC_5,           KC_6,           KC_ENTER,       KC_LPRN,
+    _______,        LCS(KC_Z),      LCS(KC_COMMA),  LCS(KC_DOT),    LCS(KC_C),      LCS(KC_MINUS),  /**/ KC_DOT,         KC_1,           KC_2,           KC_3,           KC_EQUAL,       KC_RPRN,
+                                                                    _______,        _______,        /**/ _______,        KC_0
   ),
   [HJKL] = LAYOUT_voyager(
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            _______,            _______,
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ _______,            _______,            _______,            _______,            KC_P,               _______,
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_H,               KC_J,               KC_K,               KC_L,               KC_LBRC,            KC_RBRC,
-    _______,            _______,            _______,            _______,            _______,            _______,            /**/ KC_N,               _______,            _______,            _______,            _______,            _______,
-                                                                                    _______,            _______,            /**/ _______,            _______
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        KC_P,           _______,
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ KC_H,           KC_J,           KC_K,           KC_L,           KC_LBRC,        KC_RBRC,
+    _______,        _______,        _______,        _______,        _______,        _______,        /**/ KC_N,           _______,        _______,        _______,        _______,        _______,
+                                                                    _______,        _______,        /**/ _______,        _______
   ),
 };
 
