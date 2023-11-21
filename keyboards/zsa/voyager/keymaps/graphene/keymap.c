@@ -199,6 +199,11 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t* record, uint8_t
 }
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+  // get to the original keycode if it was a tapped key
+  if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) || (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) {
+    keycode &= 0xFF;
+  }
+
   switch (keycode) {
     case KC_C:
     case KC_P:
