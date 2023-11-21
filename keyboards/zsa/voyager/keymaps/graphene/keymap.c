@@ -36,19 +36,19 @@ enum layers {
 enum custom_keycodes {
   C_MAG_2 = SAFE_RANGE,
   C_MAG_3,
+  MG_ATION,
+  MG_EFORE,
   MG_ENT,
-  MG_MENT,
   MG_ER,
-  MG_ES,
-  MG_UST,
-  MG_ON,
+  MG_ING,
   MG_ION,
-  MG_OA,
+  MG_ITH,
+  MG_ON,
+  MG_PERI,
   MG_SP_BUT,
   MG_THE,
-  MG_EFORE,
-  MG_HICH,
-  MG_MLATIV,
+  MG_UEST,
+  MG_UST,
   MG_QUOT_S,
 };
 
@@ -205,20 +205,30 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   }
 
   switch (keycode) {
-    case KC_C:
-    case KC_P:
-    case KC_D:
-    case KC_G:
-    case KC_Z: return KC_Y;
-    case KC_Y: return KC_P;
-    case KC_R: return KC_L;
-    case KC_K: return KC_S;
-    case KC_L:
-    case KC_S: return KC_K;
     case KC_U: return KC_E;
     case KC_E: return KC_U;
     case KC_O: return KC_A;
     case KC_A: return KC_O;
+
+    case KC_S: return KC_C;
+    case KC_R: return KC_L;
+    case KC_D: return KC_M;
+    case KC_C:
+    case KC_G:
+    case KC_Z: return KC_S;
+
+    case KC_B: return MG_EFORE;
+    case KC_I: return MG_ON;
+    case KC_J: return MG_UST;
+    case KC_L: return MG_ATION;
+    case KC_M: return MG_ENT;
+    case KC_N: return MG_ING;
+    case KC_Q: return MG_UEST;
+    case KC_T: return MG_ION;
+    case KC_V: return MG_ER;
+    case KC_W: return MG_ITH;
+    case KC_X: return MG_PERI;
+
     case KC_DOT:
       if (mods & MOD_MASK_SHIFT) {
         return KC_EQL;
@@ -233,17 +243,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       }
     case KC_EQL:
     case KC_MINS: return KC_RABK;
-    case KC_Q: return MG_MLATIV;
-    case KC_H: return MG_OA;
-    case KC_I: return MG_ON;
-    case KC_N: return MG_ION;
-    case KC_V: return MG_ER;
-    case KC_X: return MG_ES;
-    case KC_M: return MG_ENT;
-    case KC_T: return MG_MENT;
-    case KC_J: return MG_UST;
-    case KC_B: return MG_EFORE;
-    case KC_W: return MG_HICH;
+
     case KC_SPC:
     case KC_TAB:
     case KC_ENT: return MG_THE;
@@ -427,33 +427,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return process_magic_key_2(get_last_keycode(), get_last_mods());
       case C_MAG_3:
         return process_magic_key_3(get_last_keycode(), get_last_mods());
+
+      case MG_ATION:
+        SEND_STRING("ation");
+        return false;
+      case MG_EFORE:
+        SEND_STRING("efore");
+        return false;
       case MG_ENT:
         SEND_STRING("ent");
-        return false;
-      case MG_MENT:
-        SEND_STRING("ment");
         return false;
       case MG_ER:
         SEND_STRING("er");
         return false;
-      case MG_ES:
-        SEND_STRING("es");
+      case MG_ING:
+        SEND_STRING("ing");
         return false;
-      case MG_UST:
-        if (rep_count < -1) {
-          SEND_STRING("ment");
-        } else {
-          SEND_STRING("ust");
-        }
+      case MG_ION:
+        SEND_STRING("ion");
         return false;
-      case MG_OA:
-        SEND_STRING("oa");
+      case MG_ITH:
+        SEND_STRING("ith");
         return false;
       case MG_ON:
         SEND_STRING("on");
         return false;
-      case MG_ION:
-        SEND_STRING("ion");
+      case MG_PERI:
+        SEND_STRING("peri");
         return false;
       case MG_SP_BUT:
         SEND_STRING(" but");
@@ -461,14 +461,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case MG_THE:
         SEND_STRING("the");
         return false;
-      case MG_EFORE:
-        SEND_STRING("efore");
+      case MG_UEST:
+        SEND_STRING("uest");
         return false;
-      case MG_HICH:
-        SEND_STRING("hich");
-        return false;
-      case MG_MLATIV:
-        SEND_STRING("mlativ");
+      case MG_UST:
+        if (rep_count < -1) {
+          SEND_STRING("ment");
+        } else {
+          SEND_STRING("ust");
+        }
         return false;
       case MG_QUOT_S:
         SEND_STRING("'s");
