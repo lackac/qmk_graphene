@@ -267,6 +267,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 }
 
 bool process_magic_key_2(uint16_t prev_keycode, uint8_t prev_mods) {
+  // get to the original keycode if it was a tapped key
+  if ((prev_keycode >= QK_MOD_TAP && prev_keycode <= QK_MOD_TAP_MAX) || (prev_keycode >= QK_LAYER_TAP && prev_keycode <= QK_LAYER_TAP_MAX)) {
+    prev_keycode &= 0xFF;
+  }
+
   switch (prev_keycode) {
     case KC_B:
       SEND_STRING("ecome");
@@ -339,6 +344,11 @@ bool process_magic_key_2(uint16_t prev_keycode, uint8_t prev_mods) {
 }
 
 bool process_magic_key_3(uint16_t prev_keycode, uint8_t prev_mods) {
+  // get to the original keycode if it was a tapped key
+  if ((prev_keycode >= QK_MOD_TAP && prev_keycode <= QK_MOD_TAP_MAX) || (prev_keycode >= QK_LAYER_TAP && prev_keycode <= QK_LAYER_TAP_MAX)) {
+    prev_keycode &= 0xFF;
+  }
+
   switch (prev_keycode) {
     case KC_B:
       SEND_STRING("etween");
@@ -399,6 +409,8 @@ bool process_magic_key_3(uint16_t prev_keycode, uint8_t prev_mods) {
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
   switch (keycode) {
     case RSFT_T(QK_REP):
+    case C_MAG_2:
+    case C_MAG_3:
       return false;
       break;
   }
@@ -477,6 +489,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     if (rep_count > 0) {
+      // get to the original keycode if it was a tapped key
+      if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) || (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) {
+        keycode &= 0xFF;
+      }
+
       switch (keycode) {
         case KC_BSPC:
         case KC_DQUO:
@@ -507,10 +524,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_A:
           unregister_weak_mods(MOD_MASK_CSAG);
           SEND_STRING("nd");
-          return false;
-        case KC_N:
-          unregister_weak_mods(MOD_MASK_CSAG);
-          send_char('f');
           return false;
         case KC_B:
           unregister_weak_mods(MOD_MASK_CSAG);
