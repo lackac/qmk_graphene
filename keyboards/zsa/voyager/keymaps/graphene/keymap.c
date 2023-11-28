@@ -70,15 +70,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYM_A] = LAYOUT_voyager(
     _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
     _______,        _______,        KC_AT,          KC_HASH,        KC_PLUS,        _______,        /**/ _______,        KC_LABK,        KC_RABK,        KC_CIRCUMFLEX,  _______,        _______,
-    _______,        KC_GRAVE,       KC_TILD,        KC_UNDS,        KC_MINUS,       KC_SLASH,       /**/ KC_EQUAL,       KC_LBRC,        KC_RBRC,        KC_PIPE,        KC_BACKSLASH,   _______,
-    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        KC_DLR,         LALT(KC_3),     LSA(KC_2),      _______,        _______,
+    _______,        KC_GRAVE,       KC_TILD,        KC_UNDS,        KC_MINUS,       KC_SLASH,       /**/ KC_EQUAL,       KC_LPRN,        KC_RPRN,        KC_PIPE,        KC_BACKSLASH,   _______,
+    _______,        _______,        _______,        _______,        KC_ASTR,        _______,        /**/ _______,        KC_DLR,         LALT(KC_3),     LSA(KC_2),      _______,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYM_B] = LAYOUT_voyager(
     _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
     _______,        _______,        KC_AT,          LALT(KC_LBRC),  LALT(KC_RBRC),  _______,        /**/ _______,        KC_LPRN,        KC_RPRN,        KC_SCLN,        _______,        _______,
-    _______,        KC_ASTR,        KC_PERC,        KC_EXLM,        KC_DQUO,        _______,        /**/ _______,        KC_LCBR,        KC_RCBR,        KC_AMPR,        KC_COLN,        _______,
-    _______,        _______,        _______,        KC_QUES,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        KC_ASTR,        KC_PERC,        KC_EXLM,        KC_DQUO,        KC_QUOTE,       /**/ _______,        KC_LBRC,        KC_RBRC,        KC_AMPR,        KC_COLN,        _______,
+    _______,        _______,        _______,        KC_QUES,        _______,        _______,        /**/ _______,        KC_LCBR,        KC_RCBR,        _______,        _______,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYS_NUM] = LAYOUT_voyager(
