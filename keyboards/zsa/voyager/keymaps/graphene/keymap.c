@@ -33,8 +33,12 @@ enum layers {
   HJKL,
 };
 
+#define LAYER_CYCLE_START BASE
+#define LAYER_CYCLE_END   SYS_NUM
+
 enum custom_keycodes {
-  C_MAG_2 = SAFE_RANGE,
+  LAYER_CYCLE = SAFE_RANGE,
+  C_MAG_2,
   C_MAG_3,
   MG_ATION,
   MG_EFORE,
@@ -54,17 +58,17 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
-    _______,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           _______,
+    LAYER_CYCLE,    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           LAYER_CYCLE,
     KC_GRAVE,       KC_B,           LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   KC_J,           KC_SEMICOLON,
     LT(5, KC_ESC),  LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    KC_G,           /**/ KC_Y,           LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I),    KC_ENTER,
     KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,           /**/ KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
                                                                     HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), KC_BACKSPACE
   ),
   [SHORTCUTS] = LAYOUT_voyager(
-    RGB_TOG,        QK_KB,          RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAD,        RGB_SAI,
-    KC_BRID,        KC_BRIU,        KC_ESCAPE,      LCS(KC_TAB),    LCTL(KC_TAB),   KC_VOLU,        /**/ LGUI(KC_LBRC),  _______,        _______,        LGUI(KC_RBRC),  _______,        _______,
-    _______,        LGUI(KC_GRAVE), KC_HOME,        KC_PGUP,        _______,        KC_VOLD,        /**/ KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       _______,
-    DB_TOGG,        _______,        KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE,        /**/ _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP,        _______,
+    _______,        RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI,        _______,
+    KC_BRIU,        _______,        KC_ESCAPE,      LCS(KC_TAB),    LCTL(KC_TAB),   KC_VOLU,        /**/ LGUI(KC_LBRC),  _______,        _______,        LGUI(KC_RBRC),  RGB_SAD,        _______,
+    KC_BRID,        LGUI(KC_GRAVE), KC_HOME,        KC_PGUP,        _______,        KC_VOLD,        /**/ KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       _______,
+    DB_TOGG,        QK_KB,          KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE,        /**/ _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYM_A] = LAYOUT_voyager(
@@ -434,7 +438,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       send_char('n');
       return false;
     }
+
+    uint8_t current_layer;
+    int8_t next_layer;
+
     switch (keycode) {
+      case LAYER_CYCLE:
+        current_layer = get_highest_layer(layer_state);
+
+        if (current_layer > LAYER_CYCLE_END || current_layer < LAYER_CYCLE_START) {
+          return false;
+        }
+
+        next_layer = current_layer + (get_mods() & MOD_MASK_SHIFT ? -1 : 1);
+        if (next_layer > LAYER_CYCLE_END) {
+          next_layer = LAYER_CYCLE_START;
+        } else if (next_layer < LAYER_CYCLE_START) {
+          next_layer = LAYER_CYCLE_END;
+        }
+
+        layer_move((uint8_t) next_layer);
+        return false;
+
       case C_MAG_2:
         return process_magic_key_2(get_last_keycode(), get_last_mods());
       case C_MAG_3:
