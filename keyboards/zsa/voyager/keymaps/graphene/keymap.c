@@ -37,6 +37,7 @@ enum layers {
 
 enum custom_keycodes {
   LAYER_CYCLE = SAFE_RANGE,
+  RGB_FAV,
   C_MAG_2,
   C_MAG_3,
   MG_ATION,
@@ -65,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SHORTCUTS] = LAYOUT_voyager(
     _______,        RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI,        _______,
-    KC_BRIU,        _______,        KC_ESCAPE,      LCS(KC_TAB),    LCTL(KC_TAB),   KC_VOLU,        /**/ LGUI(KC_LBRC),  _______,        _______,        LGUI(KC_RBRC),  RGB_SAD,        _______,
+    KC_BRIU,        RGB_FAV,        KC_ESCAPE,      LCS(KC_TAB),    LCTL(KC_TAB),   KC_VOLU,        /**/ LGUI(KC_LBRC),  _______,        _______,        LGUI(KC_RBRC),  RGB_SAD,        _______,
     KC_BRID,        LGUI(KC_GRAVE), KC_HOME,        KC_PGUP,        _______,        KC_VOLD,        /**/ KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       _______,
     DB_TOGG,        QK_KB,          KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE,        /**/ _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
@@ -129,6 +130,9 @@ void keyboard_post_init_user(void) {
 #define BLACK {0, 0, 0}
 #define TREE_SAP {23, 226, 208}
 #define FELWOOD_LEAVES {79, 218, 204}
+
+#define RGB_FAV_DEFAULT 31
+uint8_t rgb_fav_current = RGB_FAV_DEFAULT;
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
   [SYS_NUM] = {
@@ -450,6 +454,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
 
         layer_move((uint8_t) next_layer);
+        return false;
+
+      case RGB_FAV:
+        if (get_mods() & MOD_MASK_CTRL) {
+          rgb_fav_current = rgb_matrix_get_mode();
+        } else {
+          rgb_matrix_mode((get_mods() & MOD_MASK_SHIFT) ? RGB_FAV_DEFAULT : rgb_fav_current);
+        }
         return false;
 
       case C_MAG_2:
