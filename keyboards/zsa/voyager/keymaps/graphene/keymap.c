@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRAVE,       KC_B,           LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   KC_J,           KC_SEMICOLON,
     KC_ESC,         LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    KC_G,           /**/ KC_Y,           LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I),    KC_ENTER,
     KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,           /**/ KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
-                                                                    HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), LT(1, KC_BACKSPACE)
+                                                                    HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), LT(1, KC_BSPC)
   ),
   [SHORTCUTS] = LAYOUT_voyager(
     _______,        RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI,        _______,
@@ -95,9 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+const key_override_t delete_key_override_layered = ko_make_basic(MOD_MASK_SHIFT, LT(1, KC_BSPC), KC_DEL);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
   &delete_key_override,
+  &delete_key_override_layered,
   NULL
 };
 
