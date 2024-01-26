@@ -133,7 +133,7 @@ void keyboard_post_init_user(void) {
 #define TREE_SAP {23, 226, 208}
 #define FELWOOD_LEAVES {79, 218, 204}
 
-#define RGB_FAV_DEFAULT 31
+#define RGB_FAV_DEFAULT RGB_MATRIX_TYPING_HEATMAP
 uint8_t rgb_fav_current = RGB_FAV_DEFAULT;
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
