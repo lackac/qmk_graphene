@@ -275,38 +275,35 @@ bool process_magic_key_2(uint16_t prev_keycode, uint8_t prev_mods) {
   }
 
   switch (prev_keycode) {
+    case KC_A:
+      SEND_STRING("lready");
+      return false;
     case KC_B:
       SEND_STRING("ecome");
+      return false;
+    case KC_C:
+      SEND_STRING("ould");
+      return false;
+    case KC_D:
+      SEND_STRING("evelop");
       return false;
     case KC_F:
       SEND_STRING("ollow");
       return false;
-    case KC_N:
-      SEND_STRING("eighbor");
+    case KC_G:
+      SEND_STRING("eneral");
       return false;
     case KC_H:
       SEND_STRING("owever");
       return false;
-    case KC_U:
-      SEND_STRING("pgrade");
-      return false;
-    case KC_O:
-      SEND_STRING("ther");
-      return false;
-    case KC_A:
-      SEND_STRING("lready");
-      return false;
-    case KC_P:
-      SEND_STRING("sych");
-      return false;
     case KC_I:
       SEND_STRING("'ll");
       return false;
+    case KC_J:
+      SEND_STRING("udge");
+      return false;
     case KC_K:
       SEND_STRING("now");
-      return false;
-    case KC_T:
-      SEND_STRING("hough");
       return false;
     case KC_L:
       SEND_STRING("ittle");
@@ -315,26 +312,32 @@ bool process_magic_key_2(uint16_t prev_keycode, uint8_t prev_mods) {
     case KC_R:
       SEND_STRING("ight");
       return false;
-    case KC_J:
-      SEND_STRING("udge");
+    case KC_N:
+      SEND_STRING("eighbor");
       return false;
-    case KC_C:
-      SEND_STRING("ould");
+    case KC_O:
+      SEND_STRING("ther");
       return false;
-    case KC_D:
-      SEND_STRING("evelop");
+    case KC_P:
+      SEND_STRING("rogram");
       return false;
-    case KC_G:
-      SEND_STRING("eneral");
+    case KC_T:
+      SEND_STRING("hough");
+      return false;
+    case KC_U:
+      SEND_STRING("pgrade");
+      return false;
+    case KC_V:
+      SEND_STRING("alue");
       return false;
     case KC_W:
       SEND_STRING("here");
       return false;
-    case KC_S:
-      SEND_STRING("hould");
+    case KC_X:
+      SEND_STRING("ception");
       return false;
     case KC_DOT:
-      SEND_STRING("org");
+      SEND_STRING("com");
       return false;
     case KC_COMM:
       SEND_STRING(" however");
@@ -352,53 +355,80 @@ bool process_magic_key_3(uint16_t prev_keycode, uint8_t prev_mods) {
   }
 
   switch (prev_keycode) {
-    case KC_B:
-      SEND_STRING("etween");
-      return false;
-    case KC_N:
-      SEND_STRING("umber");
-      return false;
-    case KC_U:
-      SEND_STRING("pdate");
-      return false;
     case KC_A:
       SEND_STRING("bout");
       return false;
-    case KC_W:
-      SEND_STRING("orld");
-      return false;
-    case KC_G:
-      SEND_STRING("overn");
-      return false;
-    case KC_P:
-      SEND_STRING("rogram");
-      return false;
-    case KC_Q:
-      SEND_STRING("uestion");
+    case KC_B:
+      SEND_STRING("etween");
       return false;
     case KC_C:
       SEND_STRING("rowd");
       return false;
-    case KC_S:
-      SEND_STRING("chool");
-      return false;
-    case KC_T:
-      SEND_STRING("hrough");
-      return false;
-    case KC_M:
-      SEND_STRING("anage");
-      return false;
-    case KC_O:
-      SEND_STRING("xygen");
-      return false;
-    case KC_I:
-      SEND_STRING("'m");
+    case KC_D:
+      SEND_STRING("efault");
       return false;
     case KC_E:
       SEND_STRING("'re");
       return false;
+    case KC_F:
+      SEND_STRING("unction");
+      return false;
+    case KC_G:
+      SEND_STRING("overn");
+      return false;
+    case KC_H:
+      SEND_STRING("ttps");
+      return false;
+    case KC_I:
+      SEND_STRING("'m");
+      return false;
+    case KC_J:
+      SEND_STRING("ourney");
+      return false;
+    case KC_L:
+      SEND_STRING("ength");
+      return false;
+    case KC_K:
+      SEND_STRING("eyword");
+      return false;
+    case KC_M:
+      SEND_STRING("anage");
+      return false;
+    case KC_N:
+      SEND_STRING("umber");
+      return false;
+    case KC_O:
+      SEND_STRING("bject");
+      return false;
+    case KC_P:
+      SEND_STRING("roject");
+      return false;
+    case KC_Q:
+      SEND_STRING("uestion");
+      return false;
+    case KC_R:
+      SEND_STRING("eturn");
+      return false;
+    case KC_S:
+      SEND_STRING("ubject");
+      return false;
+    case KC_T:
+      SEND_STRING("hrough");
+      return false;
+    case KC_U:
+      SEND_STRING("pdate");
+      return false;
+    case KC_V:
+      SEND_STRING("ersion");
+      return false;
+    case KC_W:
+      SEND_STRING("orld");
+      return false;
+    case KC_X:
+      SEND_STRING("ample");
+      return false;
     case KC_DOT:
-      SEND_STRING("com");
+      SEND_STRING("org");
       return false;
     case KC_COMM:
       SEND_STRING(" since");

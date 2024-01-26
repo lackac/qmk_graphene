@@ -29,19 +29,19 @@ The mappings in Graphene draw heavily from the choices in [Magic Sturdy](https:/
 
 |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Prev  | `A` | `B`      | `C` | `D` | `E` | `F` | `G` | `H` | `I`  | `J`   | `K` | `L`     | `M`   |
-| Magic | `O` | `EFORE`  | `S` | `M` | `U` | --  | `S` | `L` | `ON` | `UST` | `J` | `ATION` | `ENT` |
+| Prev  | `A` | `B`      | `C` | `D` | `E` | `F`  | `G` | `H` | `I`  | `J`   | `K` | `L`     | `M`   |
+| Magic | `O` | `EFORE`  | `S` | `M` | `U` | -- | `S` | `L` | `ON` | `UST` | `J` | `ATION` | `ENT` |
 
 
 |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Prev  | `N`   | `O` | `P` | `Q`    | `R` | `S` | `T`   | `U` | `V`  | `W`   | `X`    | `Y` | `Z` |
-| Magic | `ING` | `A` | --  | `UEST` | `L` | `Z` | `ION` | `E` | `ER` | `ITH` | `PERI` | --  | `S` |
+| Prev  | `N`   | `O` | `P`  | `Q`    | `R` | `S` | `T`   | `U` | `V`  | `W`   | `X`    | `Y`   | `Z` |
+| Magic | `ING` | `A` | -- | `UEST` | `L` | `Z` | `ION` | `E` | `ER` | `ITH` | `PERI` | --  | `S` |
 
 |     |     |     |     |     |     |     |     |     |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Prev  | `wspc` | `,`    | `.` | `/` | `-` | `=` | `<` | `>` |
-| Magic | `THE`  | `⎵BUT` | `\` | --  | `>` | `>` | `=` | `=` |
+| Prev  | `wspc` | `,`    | `.` | `/`  | `-` | `=` | `<` | `>` |
+| Magic | `THE`  | `⎵BUT` | `\` | -- | `>` | `>` | `=` | `=` |
 
 A second press of the `magic` key outputs `N`, regardless of the previous key. `wspc` stands for "white space" and includes `space`, `tab`, `enter`, `"`, and `(`.
 
@@ -88,34 +88,45 @@ There are two more magic keys which are mapped to combo keys. All combo keys fal
 * **`m`** `ight`
 * **`n`** `eighbor`
 * **`o`** `ther`
-* **`p`** `sych`
+* **`p`** `rogram`
 * **`r`** `ight`
 * **`s`** `hould`
 * **`t`** `hough`
 * **`u`** `pgrade`
-* **`y`** `'ll`
+* **`v`** `alue`
 * **`w`** `here`
-* **`.`** `org`
+* **`x`** `ception`
+* **`y`** `'ll`
+* **`.`** `com`
 * **`,`** ` however`
 
 #### Magic Key 3 macros
 
-* **`b`** `etween`
-* **`n`** `umber`
-* **`u`** `pdate`
 * **`a`** `bout`
-* **`w`** `orld`
-* **`g`** `overn`
-* **`p`** `rogram`
-* **`q`** `uestion`
+* **`b`** `etween`
 * **`c`** `rowd`
-* **`s`** `chool`
-* **`t`** `hrough`
-* **`m`** `anage`
-* **`o`** `xygen`
-* **`i`** `'m`
+* **`d`** `efault`
 * **`e`** `'re`
-* **`.`** `com`
+* **`f`** `unction`
+* **`g`** `overn`
+* **`h`** `ttps`
+* **`i`** `'m`
+* **`j`** `ourney`
+* **`k`** `eyword`
+* **`l`** `ength`
+* **`m`** `anage`
+* **`n`** `umber`
+* **`o`** `bject`
+* **`p`** `roject`
+* **`q`** `uestion`
+* **`r`** `eturn`
+* **`s`** `ubject`
+* **`t`** `hrough`
+* **`u`** `pdate`
+* **`v`** `ersion`
+* **`w`** `orld`
+* **`x`** `ample`
+* **`.`** `org`
 * **`,`** ` since`
 
 ## QMK Implementation
