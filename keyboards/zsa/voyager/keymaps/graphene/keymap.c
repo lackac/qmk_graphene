@@ -309,7 +309,6 @@ bool process_magic_key_2(uint16_t prev_keycode, uint8_t prev_mods) {
       SEND_STRING("ittle");
       return false;
     case KC_M:
-    case KC_R:
       SEND_STRING("ight");
       return false;
     case KC_N:
@@ -320,6 +319,15 @@ bool process_magic_key_2(uint16_t prev_keycode, uint8_t prev_mods) {
       return false;
     case KC_P:
       SEND_STRING("rogram");
+      return false;
+    case KC_Q:
+      SEND_STRING("uery");
+      return false;
+    case KC_R:
+      SEND_STRING("ight");
+      return false;
+    case KC_S:
+      SEND_STRING("hould");
       return false;
     case KC_T:
       SEND_STRING("hough");
@@ -404,7 +412,7 @@ bool process_magic_key_3(uint16_t prev_keycode, uint8_t prev_mods) {
       SEND_STRING("roject");
       return false;
     case KC_Q:
-      SEND_STRING("uestion");
+      SEND_STRING("uarter");
       return false;
     case KC_R:
       SEND_STRING("eturn");

@@ -89,6 +89,7 @@ There are two more magic keys which are mapped to combo keys. All combo keys fal
 * **`n`** `eighbor`
 * **`o`** `ther`
 * **`p`** `rogram`
+* **`q`** `uery`
 * **`r`** `ight`
 * **`s`** `hould`
 * **`t`** `hough`
@@ -118,7 +119,7 @@ There are two more magic keys which are mapped to combo keys. All combo keys fal
 * **`n`** `umber`
 * **`o`** `bject`
 * **`p`** `roject`
-* **`q`** `uestion`
+* **`q`** `uarter`
 * **`r`** `eturn`
 * **`s`** `ubject`
 * **`t`** `hrough`
