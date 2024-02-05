@@ -68,8 +68,7 @@ There are two more magic keys which are mapped to combo keys. All combo keys fal
 * left index and middle fingers (`C` + `M`) => `:`
 * right index and middle fingers (`P` + `'`) => `;`
 * middle and ring fingers (`M` + `X` or `'` + `,`) => Magic Key 2
-* ring and pinky fingers (`X` + `Q` or `,` + `.`) => Magic Key 3
-* index and ring fingers (`C` + `X` or `P` + `,`) => `'s`
+* index and ring fingers (`C` + `X` or `P` + `,`) => Magic Key 3
 
 #### Magic Key 2 macros
 

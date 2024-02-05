@@ -53,7 +53,6 @@ enum custom_keycodes {
   MG_THE,
   MG_UEST,
   MG_UST,
-  MG_QUOT_S,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -105,22 +104,18 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 const uint16_t PROGMEM combo_LB_IM[] = { KC_C, KC_M, COMBO_END};
 const uint16_t PROGMEM combo_LB_MR[] = { KC_M, KC_X, COMBO_END};
-const uint16_t PROGMEM combo_LB_RP[] = { KC_X, KC_Q, COMBO_END};
 const uint16_t PROGMEM combo_LB_IR[] = { KC_C, KC_X, COMBO_END};
 const uint16_t PROGMEM combo_RB_IM[] = { KC_P, KC_QUOT, COMBO_END};
 const uint16_t PROGMEM combo_RB_MR[] = { KC_QUOT, KC_COMM, COMBO_END};
-const uint16_t PROGMEM combo_RB_RP[] = { KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_RB_IR[] = { KC_P, KC_COMM, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(combo_LB_IM, KC_COLN),
   COMBO(combo_LB_MR, C_MAG_2),
-  COMBO(combo_LB_RP, C_MAG_3),
-  COMBO(combo_LB_IR, MG_QUOT_S),
+  COMBO(combo_LB_IR, C_MAG_3),
   COMBO(combo_RB_IM, KC_SCLN),
   COMBO(combo_RB_MR, C_MAG_2),
-  COMBO(combo_RB_RP, C_MAG_3),
-  COMBO(combo_RB_IR, MG_QUOT_S),
+  COMBO(combo_RB_IR, C_MAG_3),
 };
 
 extern rgb_config_t rgb_matrix_config;
@@ -551,9 +546,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         } else {
           SEND_STRING("ust");
         }
-        return false;
-      case MG_QUOT_S:
-        SEND_STRING("'s");
         return false;
     }
 
