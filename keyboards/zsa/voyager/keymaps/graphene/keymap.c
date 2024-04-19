@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SHORTCUTS] = LAYOUT_voyager(
     TO(BASE),       RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI,        TO(SYM_A),
-    KC_BRIU,        RGB_FAV,        KC_ESCAPE,      LCS(KC_TAB),    LCTL(KC_TAB),   KC_VOLU,        /**/ LGUI(KC_LBRC),  LCS(KC_TAB),    LCTL(KC_TAB),   LGUI(KC_RBRC),  RGB_SAD,        _______,
+    KC_BRIU,        RGB_FAV,        KC_ESCAPE,      _______,        _______,        KC_VOLU,        /**/ LGUI(KC_LBRC),  LCS(KC_TAB),    LCTL(KC_TAB),   LGUI(KC_RBRC),  RGB_SAD,        _______,
     KC_BRID,        LGUI(KC_GRAVE), MEH_T(KC_HOME), C_S_T(KC_PGUP), _______,        KC_VOLD,        /**/ KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       _______,
     DB_TOGG,        QK_KB,          KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE,        /**/ _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
