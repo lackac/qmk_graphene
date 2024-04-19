@@ -32,12 +32,8 @@ enum layers {
   SYS_NUM,
 };
 
-#define LAYER_CYCLE_START BASE
-#define LAYER_CYCLE_END   SYS_NUM
-
 enum custom_keycodes {
-  LAYER_CYCLE = SAFE_RANGE,
-  RGB_FAV,
+  RGB_FAV = SAFE_RANGE,
   C_MAG_2,
   C_MAG_3,
   MG_ATION,
@@ -57,35 +53,35 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
-    LAYER_CYCLE,    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           LAYER_CYCLE,
+    TO(SYS_NUM),    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           TO(SHORTCUTS),
     KC_GRAVE,       KC_B,           LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   KC_J,           KC_SEMICOLON,
     KC_ESC,         LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    KC_G,           /**/ KC_Y,           LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I),    KC_ENTER,
     KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,           /**/ KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
                                                                     HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), LT(1, KC_BSPC)
   ),
   [SHORTCUTS] = LAYOUT_voyager(
-    _______,        RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI,        _______,
+    TO(BASE),       RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI,        TO(SYM_A),
     KC_BRIU,        RGB_FAV,        KC_ESCAPE,      LCS(KC_TAB),    LCTL(KC_TAB),   KC_VOLU,        /**/ LGUI(KC_LBRC),  LCS(KC_TAB),    LCTL(KC_TAB),   LGUI(KC_RBRC),  RGB_SAD,        _______,
     KC_BRID,        LGUI(KC_GRAVE), MEH_T(KC_HOME), C_S_T(KC_PGUP), _______,        KC_VOLD,        /**/ KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       _______,
     DB_TOGG,        QK_KB,          KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE,        /**/ _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYM_A] = LAYOUT_voyager(
-    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+    TO(SHORTCUTS),  _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        TO(SYM_B),
     _______,        _______,        KC_AT,          KC_HASH,        KC_PLUS,        _______,        /**/ _______,        KC_LABK,        KC_RABK,        KC_CIRCUMFLEX,  _______,        _______,
     _______,        KC_GRAVE,       KC_TILD,        KC_UNDS,        KC_MINUS,       KC_SLASH,       /**/ KC_EQUAL,       KC_LPRN,        KC_RPRN,        KC_PIPE,        KC_BACKSLASH,   _______,
     _______,        _______,        _______,        _______,        KC_ASTR,        _______,        /**/ _______,        KC_DLR,         LALT(KC_3),     LSA(KC_2),      _______,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYM_B] = LAYOUT_voyager(
-    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
+    TO(SYM_A),      _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        TO(SYS_NUM),
     _______,        _______,        KC_AT,          LALT(KC_LBRC),  LALT(KC_RBRC),  _______,        /**/ _______,        KC_LPRN,        KC_RPRN,        KC_SCLN,        _______,        _______,
     _______,        KC_ASTR,        KC_PERC,        KC_EXLM,        KC_DQUO,        KC_QUOTE,       /**/ _______,        KC_LBRC,        KC_RBRC,        KC_AMPR,        KC_COLN,        _______,
     _______,        _______,        _______,        KC_QUES,        _______,        _______,        /**/ _______,        KC_LCBR,        KC_RCBR,        _______,        _______,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYS_NUM] = LAYOUT_voyager(
-    _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          /**/ KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
+    TO(SYM_B),      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          /**/ KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         TO(BASE),
     _______,        KC_1,           LCTL_T(KC_2),   LALT_T(KC_3),   LGUI_T(KC_4),   KC_5,           /**/ KC_6,           RGUI_T(KC_7),   RALT_T(KC_8),   RCTL_T(KC_9),   KC_MINUS,       KC_CIRC,
     _______,        LCS(KC_SCLN),   LCS(KC_QUOTE),  LCS(KC_LBRC),   LCS(KC_RBRC),   LCS(KC_MINUS),  /**/ KC_SLASH,       KC_4,           KC_5,           KC_6,           KC_ENTER,       KC_LPRN,
     _______,        LCS(KC_Z),      LCS(KC_COMMA),  LCS(KC_DOT),    LCS(KC_C),      LCS(KC_EQUAL),  /**/ KC_DOT,         KC_1,           KC_2,           KC_3,           KC_EQUAL,       KC_RPRN,
@@ -470,27 +466,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
     }
 
-    uint8_t current_layer;
-    int8_t next_layer;
-
     switch (keycode) {
-      case LAYER_CYCLE:
-        current_layer = get_highest_layer(layer_state);
-
-        if (current_layer > LAYER_CYCLE_END || current_layer < LAYER_CYCLE_START) {
-          return false;
-        }
-
-        next_layer = current_layer + (get_mods() & MOD_MASK_SHIFT ? -1 : 1);
-        if (next_layer > LAYER_CYCLE_END) {
-          next_layer = LAYER_CYCLE_START;
-        } else if (next_layer < LAYER_CYCLE_START) {
-          next_layer = LAYER_CYCLE_END;
-        }
-
-        layer_move((uint8_t) next_layer);
-        return false;
-
       case RGB_FAV:
         if (get_mods() & MOD_MASK_CTRL) {
           rgb_fav_current = rgb_matrix_get_mode();
