@@ -54,8 +54,8 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
-    KC_GRAVE,       KC_B,           LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   KC_J,           KC_SEMICOLON,
     TO(GAMING),     KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           TO(SHORTCUTS),
+    KC_GRAVE,       LGUI_T(KC_B),   LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   RGUI_T(KC_J),   KC_SEMICOLON,
     KC_ESC,         LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    KC_G,           /**/ KC_Y,           LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I),    KC_ENTER,
     KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,           /**/ KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
                                                                     HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), LT(1, KC_BSPC)
