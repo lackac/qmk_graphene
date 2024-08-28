@@ -30,6 +30,7 @@ enum layers {
   SYM_A,
   SYM_B,
   SYS_NUM,
+  GAMING,
 };
 
 enum custom_keycodes {
@@ -53,8 +54,8 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_voyager(
-    TO(SYS_NUM),    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           TO(SHORTCUTS),
     KC_GRAVE,       KC_B,           LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   KC_J,           KC_SEMICOLON,
+    TO(GAMING),     KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           TO(SHORTCUTS),
     KC_ESC,         LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    KC_G,           /**/ KC_Y,           LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I),    KC_ENTER,
     KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,           /**/ KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
                                                                     HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), LT(1, KC_BSPC)
@@ -81,11 +82,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYS_NUM] = LAYOUT_voyager(
-    TO(SYM_B),      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          /**/ KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         TO(BASE),
+    TO(SYM_B),      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          /**/ KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         TO(GAMING),
     _______,        KC_1,           LCTL_T(KC_2),   LALT_T(KC_3),   LGUI_T(KC_4),   KC_5,           /**/ KC_6,           RGUI_T(KC_7),   RALT_T(KC_8),   RCTL_T(KC_9),   KC_MINUS,       KC_CIRC,
     _______,        LCS(KC_SCLN),   LCS(KC_QUOTE),  LCS(KC_LBRC),   LCS(KC_RBRC),   LCS(KC_MINUS),  /**/ KC_SLASH,       KC_4,           KC_5,           KC_6,           KC_ENTER,       KC_LPRN,
     _______,        LCS(KC_Z),      LCS(KC_COMMA),  LCS(KC_DOT),    LCS(KC_C),      LCS(KC_EQUAL),  /**/ KC_DOT,         KC_1,           KC_2,           KC_3,           KC_EQUAL,       KC_RPRN,
                                                                     _______,        _______,        /**/ RSFT_T(KC_0),   _______
+  ),
+  [GAMING] = LAYOUT_voyager(
+    TO(SYS_NUM),    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ _______,        _______,        _______,        _______,        _______,        TO(BASE),
+    KC_GRAVE,       KC_Y,           KC_Q,           KC_W,           KC_E,           KC_R,           /**/ _______,        _______,        _______,        _______,        _______,        DM_REC1,
+    _______,        KC_TAB,         KC_A,           KC_S,           KC_D,           KC_F,           /**/ _______,        _______,        _______,        _______,        _______,        DM_REC2,
+    KC_LSFT,        DM_PLY2,        KC_Z,           KC_X,           KC_C,           KC_V,           /**/ _______,        _______,        _______,        _______,        _______,        DM_RSTP,
+                                                                    KC_SPC,         DM_PLY1,        /**/ _______,        _______
   ),
 };
 
@@ -120,26 +128,45 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
 
-#define BLACK {0, 0, 0}
-#define TREE_SAP {23, 226, 208}
-#define FELWOOD_LEAVES {79, 218, 204}
+#define COL_BLACK {HSV_BLACK}
+#define COL_NUMBER {HSV_GOLD}
+#define COL_OPERATOR {HSV_AZURE}
+#define COL_WASD {HSV_MAGENTA}
+#define COL_1234 {HSV_CORAL}
+#define COL_0MP {HSV_ORANGE}
+#define COL_TABS {HSV_TEAL}
+#define COL_ESC {HSV_RED}
+#define COL_SHIFT {HSV_CYAN}
 
 #define RGB_FAV_DEFAULT RGB_MATRIX_TYPING_HEATMAP
 uint8_t rgb_fav_current = RGB_FAV_DEFAULT;
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
   [SYS_NUM] = {
-    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
-    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
-    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
-    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
-                                                                                    BLACK,              BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+                                                                    COL_BLACK,      COL_BLACK,
 
-    BLACK,              BLACK,              BLACK,              BLACK,              BLACK,              BLACK,
-    BLACK,              TREE_SAP,           TREE_SAP,           TREE_SAP,           FELWOOD_LEAVES,     FELWOOD_LEAVES,
-    FELWOOD_LEAVES,     TREE_SAP,           TREE_SAP,           TREE_SAP,           FELWOOD_LEAVES,     FELWOOD_LEAVES,
-    TREE_SAP,           TREE_SAP,           TREE_SAP,           TREE_SAP,           FELWOOD_LEAVES,     FELWOOD_LEAVES,
-    TREE_SAP,           BLACK
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
+    COL_OPERATOR,   COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
+    COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
+    COL_NUMBER,     COL_BLACK,
+  },
+  [GAMING] = {
+    COL_BLACK,      COL_0MP,        COL_1234,       COL_1234,       COL_1234,       COL_1234,
+    COL_TABS,       COL_TABS,       COL_BLACK,      COL_WASD,       COL_BLACK,      COL_BLACK,
+    COL_ESC,        COL_BLACK,      COL_WASD,       COL_WASD,       COL_WASD,       COL_BLACK,
+    COL_SHIFT,      COL_0MP,        COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+                                                                    COL_NUMBER,     COL_0MP,
+
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,
   },
 };
 
@@ -165,6 +192,9 @@ bool rgb_matrix_indicators_user(void) {
   switch (biton32(layer_state)) {
     case SYS_NUM:
       set_layer_color(SYS_NUM);
+      break;
+    case GAMING:
+      set_layer_color(GAMING);
       break;
     default:
       if (rgb_matrix_get_flags() == LED_FLAG_NONE)
