@@ -100,10 +100,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 const key_override_t delete_key_override_layered = ko_make_basic(MOD_MASK_SHIFT, LT(1, KC_BSPC), KC_DEL);
 
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
   &delete_key_override,
   &delete_key_override_layered,
-  NULL
 };
 
 const uint16_t PROGMEM combo_LB_IM[] = { KC_C, KC_M, COMBO_END};
