@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(SYM_A),      _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        TO(SYS_NUM),
     _______,        _______,        KC_AT,          LALT(KC_LBRC),  LALT(KC_RBRC),  _______,        /**/ _______,        KC_LPRN,        KC_RPRN,        KC_SCLN,        _______,        _______,
     _______,        KC_ASTR,        KC_PERC,        KC_EXLM,        KC_DQUO,        KC_QUOTE,       /**/ _______,        KC_LBRC,        KC_RBRC,        KC_AMPR,        KC_COLN,        _______,
-    _______,        _______,        _______,        KC_QUES,        KC_DLR,         _______,        /**/ _______,        KC_LCBR,        KC_RCBR,        _______,        _______,        _______,
+    _______,        _______,        KC_HASH,        KC_QUES,        KC_DLR,         _______,        /**/ _______,        KC_LCBR,        KC_RCBR,        _______,        _______,        _______,
                                                                     _______,        _______,        /**/ _______,        _______
   ),
   [SYS_NUM] = LAYOUT_voyager(
