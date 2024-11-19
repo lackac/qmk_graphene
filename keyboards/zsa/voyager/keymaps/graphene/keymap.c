@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(SYM_B),      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          /**/ KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         TO(GAMING),
     _______,        KC_1,           LCTL_T(KC_2),   LALT_T(KC_3),   LGUI_T(KC_4),   KC_5,           /**/ KC_6,           RGUI_T(KC_7),   RALT_T(KC_8),   RCTL_T(KC_9),   KC_MINUS,       KC_CIRC,
     _______,        LCS(KC_SCLN),   LCS(KC_QUOTE),  LCS(KC_LBRC),   LCS(KC_RBRC),   LCS(KC_MINUS),  /**/ KC_SLASH,       KC_4,           KC_5,           KC_6,           KC_ENTER,       KC_LPRN,
-    _______,        LCS(KC_Z),      LCS(KC_COMMA),  LCS(KC_DOT),    LCS(KC_C),      LCS(KC_EQUAL),  /**/ KC_DOT,         KC_1,           KC_2,           KC_3,           KC_EQUAL,       KC_RPRN,
+    _______,        LCS(KC_Z),      LCS(KC_COMMA),  LCS(KC_DOT),    LCS(KC_C),      LCS(KC_EQUAL),  /**/ KC_EQUAL,       KC_1,           KC_2,           KC_3,           _______,       KC_RPRN,
                                                                     _______,        _______,        /**/ RSFT_T(KC_0),   _______
   ),
   [GAMING] = LAYOUT_voyager(
