@@ -12,3 +12,6 @@
 #define DYNAMIC_MACRO_DELAY 100
 
 #define RGB_MATRIX_STARTUP_SPD 60
+
+// separate underglow config doesn't seem to be working on splitkb yet
+//#define RGB_MATRIX_DISABLE_SHARED_KEYCODES

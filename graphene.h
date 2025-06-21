@@ -71,13 +71,11 @@ enum custom_keycodes {
 #define __BASE_4_R__              RSFT_T(QK_REP), LT(1, KC_BSPC)
 
 
-#define ___SHORTCUTS_0_L________  RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI
 #define ___SHORTCUTS_1_L________  RGB_FAV,        KC_ESCAPE,      _______,        _______,        KC_VOLU
 #define ___SHORTCUTS_2_L________  LGUI(KC_GRAVE), MEH_T(KC_HOME), C_S_T(KC_PGUP), _______,        KC_VOLD
 #define ___SHORTCUTS_3_L________  QK_KB,          KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE
 
-#define ___SHORTCUTS_0_R________  RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI
-#define ___SHORTCUTS_1_R________  LGUI(KC_LBRC),  LCS(KC_TAB),    LCTL(KC_TAB),   LGUI(KC_RBRC),  RGB_SAD
+#define ___SHORTCUTS_1_R________  LGUI(KC_LBRC),  LCS(KC_TAB),    LCTL(KC_TAB),   LGUI(KC_RBRC),  _______
 #define ___SHORTCUTS_2_R________  KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER
 #define ___SHORTCUTS_3_R________  _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP
 
@@ -121,9 +119,14 @@ enum custom_keycodes {
 
 #define ________HUN_OOUU________  _______,        RALT(KC_9),     RALT(KC_P),     RALT(KC_Y),     RALT(KC_7)
 
-// color definitions
-#define RGB_MATRIX_DISABLE_SHARED_KEYCODES
+#define ______RGB_MATRIX_6______  RM_TOGG, RM_NEXT, RM_HUEU, RM_SATU, RM_VALU, RM_SPDU
+#define _______UNDERGLOW_6______  UG_TOGG, UG_NEXT, UG_HUEU, UG_SATU, UG_VALU, UG_SPDU
 
+#define ___KBRD_CNTL_ETC_6______  _______, RGB_FAV, _______, QK_RBT,  DB_TOGG, QK_MAKE
+#define ___KBRD_CNTL_ETC_6_R____  QK_MAKE, DB_TOGG, QK_RBT,  _______, _______, _______
+
+
+// color definitions
 #define COL_BLACK {HSV_BLACK}
 #define COL_NUMBER {HSV_GOLD}
 #define COL_OPERATOR {HSV_AZURE}

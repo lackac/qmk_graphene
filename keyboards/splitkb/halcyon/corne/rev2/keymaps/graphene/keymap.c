@@ -48,38 +48,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ________TRNS_5__________,                                 ________TRNS_5__________
   ),
   [SPECIAL] = LAYOUT_wrapper(
-    _______,        ________TRNS_5__________, ________HUN_OOUU________, _______,
-    _______,        ________TRNS_5__________, ________TRNS_5__________, _______,
-    _______,        ________TRNS_5__________, ________TRNS_5__________, _______,
+                    ______RGB_MATRIX_6______, ________HUN_OOUU________, _______,
+                    _______UNDERGLOW_6______, ________TRNS_5__________, _______,
+                    ___KBRD_CNTL_ETC_6______, ___KBRD_CNTL_ETC_6_R____,
                        _______, __TRNS_2____, __TRNS_2____, _______,
     ________TRNS_5__________,                                 ________TRNS_5__________
   ),
 };
 
-const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {};
-// const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-//   [SYS_NUM] = {
-//     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-//     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-//     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-//                                                     COL_BLACK,      COL_BLACK,      COL_BLACK,
-//
-//     COL_BLACK,      COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
-//     COL_OPERATOR,   COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
-//     COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
-//     COL_NUMBER,     COL_BLACK,      COL_BLACK,
-//   },
-//   [GAMING] = {
-//     COL_TABS,       COL_TABS,       COL_BLACK,      COL_WASD,       COL_BLACK,      COL_BLACK,
-//     COL_ESC,        COL_BLACK,      COL_WASD,       COL_WASD,       COL_WASD,       COL_BLACK,
-//     COL_SHIFT,      COL_0MP,        COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-//                                                     COL_BLACK,      COL_NUMBER,     COL_0MP,
-//
-//     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-//     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-//     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-//     COL_BLACK,      COL_BLACK,      COL_BLACK,
-//   },
-// };
-//
+#define RGB_LAYOUT(l0A, l0B, l0C, l0D, l0E, l0F, l1A, l1B, l1C, l1D, l1E, l1F, l2A, l2B, l2C, l2D, l2E, l2F, l3D, l3E, l3F, r0A, r0B, r0C, r0D, r0E, r0F, r1A, r1B, r1C, r1D, r1E, r1F, r2A, r2B, r2C, r2D, r2E, r2F, r3A, r3B, r3C) { \
+  COL_BLACK, COL_BLACK, COL_BLACK, COL_BLACK, COL_BLACK, COL_BLACK, \
+  l3F, l3E, l3D, \
+  l2F, l2E, l2D, l2C, l2B, \
+  l1F, l1E, l1D, l1C, l1B, \
+  l0F, l0E, l0D, l0C, l0B, l0A, l1A, l2A, \
+  COL_BLACK, COL_BLACK, COL_BLACK, COL_BLACK, COL_BLACK, COL_BLACK, \
+  r3A, r3B, r3C, \
+  r2A, r2B, r2C, r2D, r2E, \
+  r1A, r1B, r1C, r1D, r1E, \
+  r0A, r0B, r0C, r0D, r0E, r0F, r1F, r2F \
+}
+
+const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
+  [SYS_NUM] = RGB_LAYOUT(
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+                                                    COL_BLACK,      COL_BLACK,      COL_BLACK,
+
+    COL_BLACK,      COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
+    COL_OPERATOR,   COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
+    COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
+    COL_NUMBER,     COL_BLACK,      COL_BLACK
+  ),
+  [GAMING] = RGB_LAYOUT(
+    COL_TABS,       COL_TABS,       COL_BLACK,      COL_WASD,       COL_BLACK,      COL_BLACK,
+    COL_ESC,        COL_BLACK,      COL_WASD,       COL_WASD,       COL_WASD,       COL_BLACK,
+    COL_SHIFT,      COL_0MP,        COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+                                                    COL_BLACK,      COL_NUMBER,     COL_0MP,
+
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_BLACK,      COL_BLACK,      COL_BLACK
+  ),
+};
+
 #include "graphene.c"
