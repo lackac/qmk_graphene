@@ -1,105 +1,4 @@
-#define KC_MAC_UNDO LGUI(KC_Z)
-#define KC_MAC_CUT LGUI(KC_X)
-#define KC_MAC_COPY LGUI(KC_C)
-#define KC_MAC_PASTE LGUI(KC_V)
-#define KC_PC_UNDO LCTL(KC_Z)
-#define KC_PC_CUT LCTL(KC_X)
-#define KC_PC_COPY LCTL(KC_C)
-#define KC_PC_PASTE LCTL(KC_V)
-#define ES_LESS_MAC KC_GRAVE
-#define ES_GRTR_MAC LSFT(KC_GRAVE)
-#define ES_BSLS_MAC ALGR(KC_6)
-#define NO_PIPE_ALT KC_GRAVE
-#define NO_BSLS_ALT KC_EQUAL
-#define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
-#define BP_NDSH_MAC ALGR(KC_8)
-#define SE_SECT_MAC ALGR(KC_6)
-#define MOON_LED_LEVEL LED_LEVEL
-
-#define LCS(kc) (QK_LCTL | QK_LSFT | (kc))
-
-#define C_MAGIC QK_AREP
-
-enum layers {
-  BASE,
-  SHORTCUTS,
-  SYM_A,
-  SYM_B,
-  SYS_NUM,
-  GAMING,
-  SPECIAL,
-};
-
-enum custom_keycodes {
-  RGB_FAV = SAFE_RANGE,
-  C_MAG_2,
-  C_MAG_3,
-  MG_ATION,
-  MG_EFORE,
-  MG_ENT,
-  MG_ER,
-  MG_ING,
-  MG_ION,
-  MG_ITH,
-  MG_ON,
-  MG_PERI,
-  MG_SP_BUT,
-  MG_THE,
-  MG_UEST,
-  MG_UST,
-};
-
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [BASE] = LAYOUT_voyager(
-    TO(GAMING),     KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           TO(SHORTCUTS),
-    KC_GRAVE,       LGUI_T(KC_B),   LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z,           /**/ C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   RGUI_T(KC_J),   KC_SEMICOLON,
-    KC_ESC,         LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    LT(6, KC_G),    /**/ LT(6, KC_Y),    LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I),    KC_ENTER,
-    KC_EQUAL,       KC_Q,           KC_X,           KC_M,           KC_C,           KC_V,           /**/ KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT,         KC_SLASH,
-                                                                    HYPR_T(KC_SPC), LSFT_T(KC_TAB),      RSFT_T(QK_REP), LT(1, KC_BSPC)
-  ),
-  [SHORTCUTS] = LAYOUT_voyager(
-    TO(BASE),       RGB_TOG,        RGB_M_P,        RGB_MOD,        RGB_SPD,        RGB_SPI,        /**/ RGB_HUD,        RGB_HUI,        RGB_VAD,        RGB_VAI,        RGB_SAI,        TO(SYM_A),
-    KC_BRIU,        RGB_FAV,        KC_ESCAPE,      _______,        _______,        KC_VOLU,        /**/ LGUI(KC_LBRC),  LCS(KC_TAB),    LCTL(KC_TAB),   LGUI(KC_RBRC),  RGB_SAD,        _______,
-    KC_BRID,        LGUI(KC_GRAVE), MEH_T(KC_HOME), C_S_T(KC_PGUP), _______,        KC_VOLD,        /**/ KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       _______,
-    DB_TOGG,        QK_KB,          KC_END,         KC_PGDN,        CW_TOGG,        KC_MUTE,        /**/ _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP,        _______,
-                                                                    _______,        _______,        /**/ _______,        _______
-  ),
-  [SYM_A] = LAYOUT_voyager(
-    TO(SHORTCUTS),  _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        TO(SYM_B),
-    _______,        _______,        KC_AT,          KC_HASH,        KC_PLUS,        _______,        /**/ _______,        KC_LABK,        KC_RABK,        KC_CIRCUMFLEX,  _______,        _______,
-    _______,        KC_GRAVE,       KC_TILD,        KC_UNDS,        KC_MINUS,       KC_SLASH,       /**/ KC_EQUAL,       KC_LPRN,        KC_RPRN,        KC_PIPE,        KC_BACKSLASH,   _______,
-    _______,        _______,        _______,        _______,        KC_ASTR,        _______,        /**/ _______,        KC_DLR,         LALT(KC_3),     LSA(KC_2),      _______,        _______,
-                                                                    _______,        _______,        /**/ _______,        _______
-  ),
-  [SYM_B] = LAYOUT_voyager(
-    TO(SYM_A),      _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        TO(SYS_NUM),
-    _______,        _______,        KC_AT,          LALT(KC_LBRC),  LALT(KC_RBRC),  _______,        /**/ _______,        KC_LPRN,        KC_RPRN,        KC_SCLN,        _______,        _______,
-    _______,        KC_ASTR,        KC_PERC,        KC_EXLM,        KC_DQUO,        KC_QUOTE,       /**/ _______,        KC_LBRC,        KC_RBRC,        KC_AMPR,        KC_COLN,        _______,
-    _______,        _______,        KC_HASH,        KC_QUES,        KC_DLR,         _______,        /**/ _______,        KC_LCBR,        KC_RCBR,        _______,        _______,        _______,
-                                                                    _______,        _______,        /**/ _______,        _______
-  ),
-  [SYS_NUM] = LAYOUT_voyager(
-    TO(SYM_B),      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          /**/ KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         TO(GAMING),
-    _______,        KC_1,           LCTL_T(KC_2),   LALT_T(KC_3),   LGUI_T(KC_4),   KC_5,           /**/ KC_6,           RGUI_T(KC_7),   RALT_T(KC_8),   RCTL_T(KC_9),   KC_MINUS,       KC_CIRC,
-    _______,        LCS(KC_SCLN),   LCS(KC_QUOTE),  LCS(KC_LBRC),   LCS(KC_RBRC),   LCS(KC_MINUS),  /**/ KC_SLASH,       KC_4,           KC_5,           KC_6,           KC_ENTER,       KC_LPRN,
-    _______,        LCS(KC_Z),      LCS(KC_COMMA),  LCS(KC_DOT),    LCS(KC_C),      LCS(KC_EQUAL),  /**/ KC_EQUAL,       KC_1,           KC_2,           KC_3,           _______,       KC_RPRN,
-                                                                    _______,        _______,        /**/ RSFT_T(KC_0),   _______
-  ),
-  [GAMING] = LAYOUT_voyager(
-    TO(SYS_NUM),    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           /**/ _______,        _______,        _______,        _______,        _______,        TO(BASE),
-    KC_GRAVE,       KC_Y,           KC_Q,           KC_W,           KC_E,           KC_R,           /**/ _______,        _______,        _______,        _______,        _______,        DM_REC1,
-    _______,        KC_TAB,         KC_A,           KC_S,           KC_D,           KC_F,           /**/ _______,        _______,        _______,        _______,        _______,        DM_REC2,
-    KC_LSFT,        DM_PLY2,        KC_Z,           KC_X,           KC_C,           KC_V,           /**/ _______,        _______,        _______,        _______,        _______,        DM_RSTP,
-                                                                    KC_SPC,         DM_PLY1,        /**/ _______,        _______
-  ),
-  [SPECIAL] = LAYOUT_voyager(
-    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        RALT(KC_9),     RALT(KC_P),     RALT(KC_Y),     RALT(KC_7),     _______,
-    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        _______,        _______,        _______,        /**/ _______,        _______,        _______,        _______,        _______,        _______,
-                                                                    _______,        _______,        /**/ _______,        _______
-  ),
-};
+#include "graphene.h"
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 const key_override_t delete_key_override_layered = ko_make_basic(MOD_MASK_SHIFT, LT(1, KC_BSPC), KC_DEL);
@@ -131,47 +30,7 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
 
-#define COL_BLACK {HSV_BLACK}
-#define COL_NUMBER {HSV_GOLD}
-#define COL_OPERATOR {HSV_AZURE}
-#define COL_WASD {HSV_MAGENTA}
-#define COL_1234 {HSV_CORAL}
-#define COL_0MP {HSV_ORANGE}
-#define COL_TABS {HSV_TEAL}
-#define COL_ESC {HSV_RED}
-#define COL_SHIFT {HSV_CYAN}
-
-#define RGB_FAV_DEFAULT RGB_MATRIX_TYPING_HEATMAP
 uint8_t rgb_fav_current = RGB_FAV_DEFAULT;
-
-const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-  [SYS_NUM] = {
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-                                                                    COL_BLACK,      COL_BLACK,
-
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
-    COL_OPERATOR,   COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
-    COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_NUMBER,     COL_OPERATOR,   COL_OPERATOR,
-    COL_NUMBER,     COL_BLACK,
-  },
-  [GAMING] = {
-    COL_BLACK,      COL_0MP,        COL_1234,       COL_1234,       COL_1234,       COL_1234,
-    COL_TABS,       COL_TABS,       COL_BLACK,      COL_WASD,       COL_BLACK,      COL_BLACK,
-    COL_ESC,        COL_BLACK,      COL_WASD,       COL_WASD,       COL_WASD,       COL_BLACK,
-    COL_SHIFT,      COL_0MP,        COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-                                                                    COL_NUMBER,     COL_0MP,
-
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,
-  },
-};
 
 void set_layer_color(int layer) {
   for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
@@ -191,7 +50,7 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (keyboard_config.disable_layer_led) { return false; }
+  // if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
     case SYS_NUM:
       set_layer_color(SYS_NUM);
