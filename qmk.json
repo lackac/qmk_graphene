@@ -1,7 +1,41 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["zsa/voyager", "graphene"],
-        ["splitkb/halcyon/corne/rev2", "graphene"]
+        [
+            "zsa/voyager",
+            "graphene"
+        ],
+        [
+            "splitkb/halcyon/corne/rev2",
+            "graphene",
+            {
+                "HLC_TFT_DISPLAY": "1",
+                "TARGET": "splitkb_halcyon_corne_rev2_graphene_display"
+            }
+        ],
+        [
+            "splitkb/halcyon/corne/rev2",
+            "graphene",
+            {
+                "HLC_ENCODER": "1",
+                "TARGET": "splitkb_halcyon_corne_rev2_graphene_encoder"
+            }
+        ],
+        [
+            "splitkb/halcyon/corne/rev2",
+            "graphene",
+            {
+                "HLC_CIRQUE_TRACKPAD": "1",
+                "TARGET": "splitkb_halcyon_corne_rev2_graphene_cirque_trackpad"
+            }
+        ],
+        [
+            "splitkb/halcyon/corne/rev2",
+            "graphene",
+            {
+                "HLC_NONE": "1",
+                "TARGET": "splitkb_halcyon_corne_rev2_graphene"
+            }
+        ]
     ]
 }
