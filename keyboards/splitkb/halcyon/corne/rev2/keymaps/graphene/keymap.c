@@ -54,6 +54,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        _______, __TRNS_2____, __TRNS_2____, _______,
     ________TRNS_5__________,                                 ________TRNS_5__________
   ),
+  [EMOJI] = LAYOUT_wrapper(
+    _______,        ________TRNS_5__________, KC_0,     ________TRNS_5__________,
+    _______,        ________TRNS_5__________, ________TRNS_5__________,  _______,
+    _______,        ________TRNS_5__________, ________TRNS_5__________,  _______,
+                       _______, __TRNS_2____, __TRNS_2____, _______,
+    ________TRNS_5__________,                                 ________TRNS_5__________
+  ),
 };
 
 #define RGB_LAYOUT(l0A, l0B, l0C, l0D, l0E, l0F, l1A, l1B, l1C, l1D, l1E, l1F, l2A, l2B, l2C, l2D, l2E, l2F, l3D, l3E, l3F, r0A, r0B, r0C, r0D, r0E, r0F, r1A, r1B, r1C, r1D, r1E, r1F, r2A, r2B, r2C, r2D, r2E, r2F, r3A, r3B, r3C) { \
@@ -115,6 +122,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
       }
       break;
   }
+
+  handle_emoji_layer_state(state);
+
   return state;
 }
 

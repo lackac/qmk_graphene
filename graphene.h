@@ -32,6 +32,7 @@ enum layers {
   SYS_NUM,
   GAMING,
   SPECIAL,
+  EMOJI,
 };
 
 enum custom_keycodes {
@@ -53,6 +54,8 @@ enum custom_keycodes {
   MG_UST,
 };
 
+void handle_emoji_layer_state(layer_state_t state);
+
 // row definitions for assembling layers in keymaps
 #define __TRNS_2____              _______,        _______
 #define ________TRNS_5__________  _______,        _______,        _______,        _______,        _______
@@ -61,13 +64,13 @@ enum custom_keycodes {
 #define ________BASE_0_L________  KC_1,           KC_2,           KC_3,           KC_4,           KC_5
 #define ________BASE_1_L________  LGUI_T(KC_B),   LCTL_T(KC_L),   LALT_T(KC_D),   LGUI_T(KC_W),   KC_Z
 #define ________BASE_2_L________  LT(4, KC_N),    LT(3, KC_R),    LT(2, KC_T),    LT(1, KC_S),    LT(6, KC_G)
-#define ________BASE_3_L________  KC_Q,           KC_X,           KC_M,           KC_C,           KC_V
+#define ________BASE_3_L________  KC_Q,           KC_X,           KC_M,           KC_C,           LT(7, KC_V)
 #define __BASE_4_L__                                                              HYPR_T(KC_SPC), LSFT_T(KC_TAB)
 
 #define ________BASE_0_R________  KC_6,           KC_7,           KC_8,           KC_9,           KC_0
 #define ________BASE_1_R________  C_MAGIC,        RGUI_T(KC_F),   RALT_T(KC_O),   RCTL_T(KC_U),   RGUI_T(KC_J)
 #define ________BASE_2_R________  LT(6, KC_Y),    LT(1, KC_H),    LT(2, KC_A),    LT(3, KC_E),    LT(4, KC_I)
-#define ________BASE_3_R________  KC_K,           KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT
+#define ________BASE_3_R________  LT(7, KC_K),    KC_P,           KC_QUOTE,       KC_COMMA,       KC_DOT
 #define __BASE_4_R__              RSFT_T(QK_REP), LT(1, KC_BSPC)
 
 

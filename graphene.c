@@ -31,6 +31,19 @@ void keyboard_post_init_user(void) {
 }
 
 uint8_t rgb_fav_current = RGB_FAV_DEFAULT;
+static bool emoji_f13_held = false;
+
+void handle_emoji_layer_state(layer_state_t state) {
+  bool emoji_active = layer_state_cmp(state, EMOJI);
+
+  if (emoji_active && !emoji_f13_held) {
+    register_code(KC_F13);
+    emoji_f13_held = true;
+  } else if (!emoji_active && emoji_f13_held) {
+    unregister_code(KC_F13);
+    emoji_f13_held = false;
+  }
+}
 
 void set_layer_color(int layer) {
   for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {

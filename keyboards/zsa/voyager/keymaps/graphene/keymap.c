@@ -53,7 +53,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     ___KBRD_CNTL_ETC_6______, ___KBRD_CNTL_ETC_6_R____,
                                 __TRNS_2____, __TRNS_2____
   ),
+  [EMOJI] = LAYOUT_wrapper_voyager(
+    _______,        ________TRNS_5__________, ________TRNS_5__________, _______,
+    _______,        ________TRNS_5__________, KC_0,    ________TRNS_5__________,
+    _______,        ________TRNS_5__________, ________TRNS_5__________, _______,
+    _______,        ________TRNS_5__________, ________TRNS_5__________, _______,
+                                __TRNS_2____, __TRNS_2____
+  ),
 };
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  handle_emoji_layer_state(state);
+  return state;
+}
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
   [SYS_NUM] = {
