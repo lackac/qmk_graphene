@@ -9,7 +9,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(GAMING),     ________BASE_1_L________, ________BASE_1_R________, TO(SHORTCUTS),
     KC_ESC,         ________BASE_2_L________, ________BASE_2_R________, KC_ENTER,
     KC_EQUAL,       ________BASE_3_L________, ________BASE_3_R________, KC_SLASH,
-                       _______, __BASE_4_L__, __BASE_4_R__, _______,
+                       MS_BTN1, __BASE_4_L__, __BASE_4_R__, MS_BTN2,
     __MUTE_AND_NOs__,                                                 __MUTE_AND_NOs__
   ),
   [SHORTCUTS] = LAYOUT_wrapper(
@@ -96,7 +96,6 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
 #include "graphene.c"
 
-#ifdef HLC_CIRQUE_TRACKPAD
 static bool scrolling_mode = false;
 
 #define SCROLL_DIVISOR_H 32.0
@@ -139,4 +138,3 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
   }
   return mouse_report;
 }
-#endif
