@@ -40,11 +40,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 __TRNS_2____, __SYSN_4_R__
   ),
   [GAMING] = LAYOUT_wrapper(
-    TO(SYS_NUM),    ______GAMING_0_L________, ________TRNS_5__________, TO(BASE),
-    KC_GRAVE,       ______GAMING_1_L________, ________TRNS_5__________, DM_REC1,
-    _______,        ______GAMING_2_L________, ________TRNS_5__________, DM_REC2,
-    KC_LSFT,        ______GAMING_3_L________, ________TRNS_5__________, DM_RSTP,
-                                __GMNG_4_L__, __TRNS_2____
+    TO(SYS_NUM),    ______GAMING_0_L________, ______GAMING_0_R________, TO(BASE),
+    LALT_T(KC_GRV), ______GAMING_1_L________, ______GAMING_1_R________, DM_REC1,
+    LCTL_T(KC_ESC), ______GAMING_2_L________, ______GAMING_2_R________, DM_REC2,
+    KC_LSFT,        ______GAMING_3_L________, ______GAMING_3_R________, KC_BSPC,
+                                __GMNG_4_L__, __GMNG_4_R__
   ),
   [SPECIAL] = LAYOUT_wrapper(
     _______,        ________TRNS_5__________, ________TRNS_5__________, _______,

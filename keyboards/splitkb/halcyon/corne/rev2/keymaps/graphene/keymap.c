@@ -41,10 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ________TRNS_5__________,                                 ________TRNS_5__________
   ),
   [GAMING] = LAYOUT_wrapper(
-    TO(SYS_NUM),    ______GAMING_1_L________, ________TRNS_5__________, TO(BASE),
-    _______,        ______GAMING_2_L________, ________TRNS_5__________, DM_REC1,
-    KC_LSFT,        ______GAMING_3_L________, ________TRNS_5__________, DM_REC2,
-                      KC_GRAVE, __GMNG_4_L__, __TRNS_2____, DM_RSTP,
+    TO(SYS_NUM),    ______GAMING_1_L________, ______GAMING_1_R________, TO(BASE),
+    LGUI_T(KC_ESC), ______GAMING_2_L________, ______GAMING_2_R________, DM_REC1,
+    KC_LSFT,        ______GAMING_3_L________, ______GAMING_3_R________, DM_REC2,
+              LALT_T(KC_GRAVE), __GMNG_4_L__, __GMNG_4_R__, KC_BSPC,
     ________TRNS_5__________,                                 ________TRNS_5__________
   ),
   [SPECIAL] = LAYOUT_wrapper(
@@ -82,15 +82,15 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     COL_NUMBER,     COL_BLACK,      COL_BLACK
   ),
   [GAMING] = RGB_LAYOUT(
-    COL_TABS,       COL_TABS,       COL_BLACK,      COL_WASD,       COL_BLACK,      COL_BLACK,
-    COL_ESC,        COL_BLACK,      COL_WASD,       COL_WASD,       COL_WASD,       COL_BLACK,
+    COL_TABS,       COL_BLACK,      COL_WASD,       COL_BLACK,      COL_BLACK,      COL_BLACK,
+    COL_ESC,        COL_WASD,       COL_WASD,       COL_WASD,       COL_BLACK,      COL_BLACK,
     COL_SHIFT,      COL_0MP,        COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-                                                    COL_BLACK,      COL_NUMBER,     COL_0MP,
+                                                    COL_BLACK,      COL_NUMBER,     COL_BLACK,
 
     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
     COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,      COL_BLACK,
-    COL_BLACK,      COL_BLACK,      COL_BLACK
+    COL_0MP,        COL_0MP,        COL_BLACK
   ),
 };
 

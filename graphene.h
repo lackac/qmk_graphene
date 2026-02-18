@@ -111,11 +111,16 @@ enum custom_keycodes {
 
 
 #define ______GAMING_0_L________  KC_1,           KC_2,           KC_3,           KC_4,           KC_5
-#define ______GAMING_1_L________  KC_Y,           KC_Q,           KC_W,           KC_E,           KC_R
-#define ______GAMING_2_L________  KC_TAB,         KC_A,           KC_S,           KC_D,           KC_F
-#define ______GAMING_3_L________  DM_PLY2,        KC_Z,           KC_X,           KC_C,           KC_V
+#define ______GAMING_1_L________  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T
+#define ______GAMING_2_L________  KC_A,           KC_S,           KC_D,           KC_F,           KC_G
+#define ______GAMING_3_L________  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B
 #define __GMNG_4_L__                                                              KC_SPC,         DM_PLY1
 
+#define ______GAMING_0_R________  KC_6,           KC_7,           KC_8,           KC_9,           KC_0
+#define ______GAMING_1_R________  KC_Y,           KC_U,           KC_I,           KC_O,           KC_P
+#define ______GAMING_2_R________  KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN
+#define ______GAMING_3_R________  KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH
+#define __GMNG_4_R__              DM_PLY2,        _______
 
 #define ________HUN_OOUU________  _______,        RALT(KC_9),     RALT(KC_P),     RALT(KC_Y),     RALT(KC_7)
 
