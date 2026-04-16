@@ -80,7 +80,7 @@ void handle_emoji_layer_state(layer_state_t state);
 
 #define ___SHORTCUTS_1_R________  LGUI(KC_LBRC),  LCS(KC_TAB),    LCTL(KC_TAB),   LGUI(KC_RBRC),  _______
 #define ___SHORTCUTS_2_R________  KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER
-#define ___SHORTCUTS_3_R________  _______,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP
+#define ___SHORTCUTS_3_R________  KC_F11,         KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MSTP
 
 
 #define _______SYM_A_1_L________  _______,        KC_AT,          KC_HASH,        KC_PLUS,        _______
